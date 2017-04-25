@@ -4,7 +4,8 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import 'element-ui/lib/theme-default/index.css';
-import MsgManagement from './components/MsgManagement'
+// import MsgManagement from './components/MsgManagement'
+import MsgManagement from './components/editID'
 import ElementUi from 'element-ui';
 Vue.config.productionTip = false
 
