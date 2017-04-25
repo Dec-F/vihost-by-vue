@@ -3,13 +3,13 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import 'vue-awesome/icons';
+// import 'vue-awesome/icons';
 import MsgManagement from './components/MsgManagement'
-import Icon from 'vue-awesome/components/Icon';
+// import Icon from 'vue-awesome/components/Icon';
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
-Vue.component('icon',Icon)
+// Vue.component('icon',Icon)
 
 new Vue({
   el: '#app',
