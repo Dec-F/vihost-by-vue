@@ -13,7 +13,7 @@ Vue.use(ElementUi)
 
 new Vue({
   el: '#app',
-  router,
+  // router,
   template: '<MsgManagement/>',
   components: { MsgManagement }
 });
