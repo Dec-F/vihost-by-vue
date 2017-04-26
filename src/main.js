@@ -1,21 +1,36 @@
-// The Vue build version to load with the `import` command
-// (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
-import App from './App'
-import router from './router'
-import 'element-ui/lib/theme-default/index.css';
-// import MsgManagement from './components/MsgManagement'
-import MsgManagement from './components/editID'
-import ElementUi from 'element-ui';
-Vue.config.productionTip = false
+import router from './router/index';
+// import Vuex from 'vuex'
+// import App from './App'
+import Index from './Index'
+// import  MainContent  from './components/Main';
+// import { Button, Collapse, Menu,MenuItem,Submenu } from 'element-ui';
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-default/index.css'
 
+Vue.config.productionTip = false
+// Vue.use(Vuex);
 /* eslint-disable no-new */
-Vue.use(ElementUi)
+// new Vue({
+//   el: '#app',
+//   template: '<App/>',
+//   components: { App }
+// })
+// Vue.use(Vuex)
+// Vue.use(Button)
+// Vue.use(Collapse)
+// Vue.use(Menu)
+// Vue.use(MenuItem)
+// Vue.use(Submenu)
+Vue.use(ElementUI)
+
+
 
 new Vue({
-  el: '#app',
-  // router,
-  template: '<MsgManagement/>',
-  components: { MsgManagement }
-});
-
+  el:'#app',
+  // store,
+  router,
+  // render:h=>h(Index),
+  template:'<Index/>',
+  components:{ Index }
+})
