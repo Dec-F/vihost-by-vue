@@ -41,9 +41,17 @@
                     <el-menu-item index="v-6-2" class='menu-mixin'>发布公告</el-menu-item>
                 </el-submenu>
                 <el-menu-item index="v-7" class="icon-wrap">文章管理<i class='el-icon-arrow-right icon-item'></i></el-menu-item>
-                <el-menu-item index="v-8" class="icon-wrap">入驻部门<i class='el-icon-arrow-right icon-item'></i></el-menu-item>
-                <el-menu-item index="v-9" class="icon-wrap">修改账号资料<i class='el-icon-arrow-right icon-item'></i></el-menu-item>
-                <el-menu-item index="v-10" class="icon-wrap">部门账号管理<i class='el-icon-arrow-right icon-item'></i></el-menu-item>
+                <el-submenu index="v-8" class="icon-wrap">
+                    <span slot="title">入驻部门</span>
+                    <router-link to='/settledList'>
+                        <el-menu-item index="v-8-1" class='menu-mixin'>入驻部门列表</el-menu-item>
+                    </router-link>
+                    <router-link to='/AddSettled'>
+                        <el-menu-item index="v-8-2" class='menu-mixin'>添加部门入驻</el-menu-item>
+                    </router-link>
+                </el-submenu>
+                <router-link to='/msgmanagement'><el-menu-item index="v-9" class="icon-wrap">修改账号资料<i class='el-icon-arrow-right icon-item'></i></el-menu-item></router-link>
+               <router-link to='/editId'> <el-menu-item index="v-10" class="icon-wrap">部门账号管理<i class='el-icon-arrow-right icon-item'></i></el-menu-item></router-link>
             </el-menu>
     
         </el-col>
