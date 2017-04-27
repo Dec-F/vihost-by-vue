@@ -26,12 +26,24 @@
                         </el-table-column>
                     </el-table>
                 </div>
-               
             </div>
+            <el-row class='title-top'>
+                <el-col :span='2'>
+                    <h3>标签管理</h3>
+                </el-col>
+                <el-col :offset='16' :span='2'>
+                    sdsdsd
+                </el-col>
+                <el-col :span='2'>
+                    sds
+                </el-col>
+                <el-col :span='2'>
+                    sda
+                </el-col>
+            </el-row>
         </div>
     </div>
 </template>
-
 <script>
 export default {
     data() {
@@ -89,4 +101,11 @@ export default {
     color: #00aaef
 }
 
+=======
+
+<style scoped>
+.title-top{
+    padding-top: 20px
+}
+>>>>>>> 1da43f682681c4b406e97a1dbb3363504466d546
 </style>

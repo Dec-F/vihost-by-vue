@@ -16,6 +16,7 @@ import BulletinList from '../components/BulletinList';
 import Announcement from '../components/Announcement';
 import TagsManagement from '../components/TagsManagement';
 
+
 Vue.use(Router)
 
 export default new Router({
@@ -36,5 +37,6 @@ export default new Router({
         { path: '/BulletinList', component: BulletinList },
         { path: '/Announcement', component: Announcement },
         { path: '/TagsManagement', component: TagsManagement },
+
     ]
 })
