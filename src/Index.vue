@@ -20,7 +20,9 @@
                 <router-link to='/depart'>
                     <el-menu-item index="v-2" class=''>首页管理</el-menu-item>
                 </router-link>
-                <router-link to='/qr'><el-menu-item index='v-3' class="icon-wrap">二维码<i class='el-icon-picture icon-item'></i></el-menu-item> </router-link>               
+                <router-link to='/qr'>
+                    <el-menu-item index='v-3' class="icon-wrap">二维码<i class='el-icon-picture icon-item'></i></el-menu-item>
+                </router-link>
                 <el-submenu index="v-4">
                     <span slot="title">服务窗</span>
                     <router-link to='/menu'>
@@ -32,15 +34,31 @@
                 </el-submenu>
                 <el-submenu index="v-5">
                     <span slot="title">用户管理</span>
-                    <el-menu-item index="v-5-1" class='menu-mixin'>标签管理</el-menu-item>
-                    <el-menu-item index="v-5-2" class='menu-mixin'>用户列表</el-menu-item>
+                    <router-link to='/TagsManagement'>
+                        <el-menu-item index="v-5-1" class='menu-mixin'>标签管理</el-menu-item>
+                    </router-link>
+                    <!--<router-link to='/'>-->
+                        <el-menu-item index="v-5-2" class='menu-mixin'>用户列表</el-menu-item>
+                    <!--</router-link>-->
                 </el-submenu>
                 <el-submenu index="v-6">
                     <span slot="title">公告管理</span>
-                    <el-menu-item index="v-6-1" class='menu-mixin'>公告列表</el-menu-item>
-                    <el-menu-item index="v-6-2" class='menu-mixin'>发布公告</el-menu-item>
+                    <router-link to='/BulletinList'>
+                        <el-menu-item index="v-6-1" class='menu-mixin'>公告列表</el-menu-item>
+                    </router-link>
+                    <router-link to='/Announcement'>
+                        <el-menu-item index="v-6-2" class='menu-mixin'>发布公告</el-menu-item>
+                    </router-link>
                 </el-submenu>
-                <el-menu-item index="v-7" class="icon-wrap">文章管理<i class='el-icon-arrow-right icon-item'></i></el-menu-item>
+                <el-submenu index="v-7" class="icon-wrap">
+                    <span slot="title">文章管理</span>
+                    <router-link to='/articleColumn'>
+                        <el-menu-item index="v-7-1" class='menu-mixin'>文章栏目</el-menu-item>
+                    </router-link>
+                    <router-link to='/articleList'>
+                        <el-menu-item index="v-7-2" class='menu-mixin'>文章列表</el-menu-item>
+                    </router-link>
+                </el-submenu>
                 <el-submenu index="v-8" class="icon-wrap">
                     <span slot="title">入驻部门</span>
                     <router-link to='/settledList'>
@@ -50,8 +68,12 @@
                         <el-menu-item index="v-8-2" class='menu-mixin'>添加部门入驻</el-menu-item>
                     </router-link>
                 </el-submenu>
-                <router-link to='/msgmanagement'><el-menu-item index="v-9" class="icon-wrap">修改账号资料<i class='el-icon-arrow-right icon-item'></i></el-menu-item></router-link>
-               <router-link to='/editId'> <el-menu-item index="v-10" class="icon-wrap">部门账号管理<i class='el-icon-arrow-right icon-item'></i></el-menu-item></router-link>
+                <router-link to='/msgmanagement'>
+                    <el-menu-item index="v-9" class="icon-wrap">修改账号资料</el-menu-item>
+                </router-link>
+                <router-link to='/editId'>
+                    <el-menu-item index="v-10" class="icon-wrap">部门账号管理</el-menu-item>
+                </router-link>
             </el-menu>
     
         </el-col>
@@ -110,15 +132,17 @@ body,
 .menu-mixin:hover {
     background-color: #475669
 }
-.v-nav{
-    position:absolute;
+
+.v-nav {
+    position: absolute;
     box-sizing: border-box;
     top: 0;
     padding-top: 60px;
     height: 100vh;
-    background-color:  #324057
+    background-color: #324057
 }
-.h-nav{
+
+.h-nav {
     z-index: 10
 }
 
@@ -146,7 +170,6 @@ body,
 .relative-wrap {
     overflow: hidden;
     height: 100%
-    
 }
 
 .relative p {

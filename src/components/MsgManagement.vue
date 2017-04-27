@@ -1,15 +1,14 @@
 <template>
     <div class="relative-wrap">
         <div class="relative">
-    
             <div class="msg-box">
-                <div class="msg-setting-box">
+                <h3 class="msg-setting-box">
                     留言板设置
                     <div class="moreaction">
                         <a href="javascript:;" @click="goback()"><i class="el-icon-arrow-left"></i>返回</a>
                         <a href="javascript:;" @click="refresh()"><i class="el-icon-loading"></i>刷新</a>
                     </div>
-                </div>
+                </h3>
                 <form action="" class="clearfix">
                     <div class="arrangement lineHeight">
                         <span id="msgtitle">集合标题</span>
@@ -22,7 +21,10 @@
                     <div class="arrangement">
                         <span id="coverImg">封边图片</span>
                         <img src="http://fwc.vihost.cn/Public/images/default/01.jpg">
-                        <el-input class="file" type='file'></el-input>
+                        <el-upload class="upload-demo" action="">
+                            <el-button size="small" type="primary">点击上传</el-button>
+                            <div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过500kb</div>
+                        </el-upload>
                     </div>
                     <div class="arrangement lineHeight">
                         <span>是否审核</span>
@@ -63,6 +65,7 @@ export default {
 * {
     text-align: left;
 }
+
 i {
     vertical-align: middle;
     font-size: 15px
@@ -136,6 +139,10 @@ textarea {
     top: -35px;
 }
 
+.upload-demo {
+    display: inline-block;
+}
+
 .synopsis {
     width: 60%;
     height: 60px;
@@ -150,17 +157,15 @@ textarea {
     margin: 0 10px;
 }
 
-.arrangement .file {
-    position: relative;
-    top: -35px;
-    width: 40%;
-}
-
 .submitBox {
     text-align: center;
 }
 
 .arrangement .el-checkbox {
     margin-left: 10px;
+}
+
+.el-button {
+    padding: 10px 50px;
 }
 </style>

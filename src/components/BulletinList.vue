@@ -3,9 +3,9 @@
         <div class="relative">
             <div class="msg-box">
                 <h3 class="msg-setting-box">
-                    标签管理
+                    公告列表
                     <div class="moreaction">
-                        <a href="javascript:;" @click="goback()"><i class="el-icon-plus"></i>添加文章</a>
+                        <a href="javascript:;"><i class="el-icon-plus"></i>推送公告</a>
                         <a href="javascript:;" @click="goback()"><i class="el-icon-arrow-left"></i>返回</a>
                         <a href="javascript:;" @click="refresh()"><i class="el-icon-loading"></i>刷新</a>
                     </div>
@@ -13,11 +13,15 @@
                 <div class="content-itemlist">
                     <div class="presentation">列表</div>
                     <el-table :data="tableData" border style="width: 100%">
-                        <el-table-column prop="id" label="序号" width="120px"></el-table-column>
-                        <el-table-column prop="AlipayID" label="支付宝id"></el-table-column>
-                        <el-table-column prop="name" label="名称" width="160px"></el-table-column>
-                        <el-table-column prop="editDate" label="最后编辑时间"></el-table-column>
-                        <el-table-column label="操作" >
+                        <el-table-column prop="id" label="ID" width="70px"></el-table-column>
+                        <el-table-column prop="content" label="内容"></el-table-column>
+                        <el-table-column prop="publisher" label="发布者" width="80px"></el-table-column>
+                        <el-table-column prop="startDate" label="开始时间"></el-table-column>
+                        <el-table-column prop="endDate" label="结束时间"></el-table-column>
+                        <el-table-column prop="status" label="状态" width="90px"></el-table-column>
+                        <el-table-column prop="pageviews" label="浏览量" width="120px"></el-table-column>
+                        <el-table-column prop="publisherJob" label="发布职位"></el-table-column>
+                        <el-table-column label="操作" width="220px">
                             <template scope="scope">
                                 <el-button type="text" size="small" icon="edit">编辑</el-button>
                                 <el-button type="text" size="small" icon="delete2">删除</el-button>
@@ -37,10 +41,15 @@ export default {
     data() {
         return {
             tableData: [{
-                id: '42',
-                AlipayID: 'sd',
-                name: '王小虎',
-                editDate: '17-4-26 12:45:25',
+                id: '20',
+                content: 'sd',
+                publisher: '王小虎',
+                startDate: '17-4-26 12:45:25',
+                endDate: '17-4-26 12:45:25',
+                status: '未启用',
+                pageviews: '234423345',
+                publisherJob: 'hgf',
+                
             }]
         }
     }
@@ -88,5 +97,4 @@ export default {
 .el-table_1_column_11 .el-button--text:hover {
     color: #00aaef
 }
-
 </style>

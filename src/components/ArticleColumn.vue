@@ -3,9 +3,9 @@
         <div class="relative">
             <div class="msg-box">
                 <h3 class="msg-setting-box">
-                    标签管理
+                    文章栏目
                     <div class="moreaction">
-                        <a href="javascript:;" @click="goback()"><i class="el-icon-plus"></i>添加文章</a>
+                        <a href="javascript:;"><i class="el-icon-plus"></i>添加栏目</a>
                         <a href="javascript:;" @click="goback()"><i class="el-icon-arrow-left"></i>返回</a>
                         <a href="javascript:;" @click="refresh()"><i class="el-icon-loading"></i>刷新</a>
                     </div>
@@ -13,15 +13,16 @@
                 <div class="content-itemlist">
                     <div class="presentation">列表</div>
                     <el-table :data="tableData" border style="width: 100%">
-                        <el-table-column prop="id" label="序号" width="120px"></el-table-column>
-                        <el-table-column prop="AlipayID" label="支付宝id"></el-table-column>
-                        <el-table-column prop="name" label="名称" width="160px"></el-table-column>
-                        <el-table-column prop="editDate" label="最后编辑时间"></el-table-column>
-                        <el-table-column label="操作" >
+                        <el-table-column prop="id" label="ID" width="140px"></el-table-column>
+                        <el-table-column prop="name" label="分类名称" width="140px"></el-table-column>
+                        <el-table-column prop="sort" label="排序" width="100px"></el-table-column>
+                        <el-table-column prop="style" label="类型" width="120px"></el-table-column>
+                        <el-table-column prop="editDate" label="最后编辑时间" width="260px"></el-table-column>
+                        <el-table-column label="操作">
                             <template scope="scope">
                                 <el-button type="text" size="small" icon="edit">编辑</el-button>
                                 <el-button type="text" size="small" icon="delete2">删除</el-button>
-                                <el-button type="text" size="small">链接地址</el-button>
+                                <el-button type="text" size="small" icon="document">查看文章</el-button>
                             </template>
                         </el-table-column>
                     </el-table>
@@ -37,9 +38,10 @@ export default {
     data() {
         return {
             tableData: [{
-                id: '42',
-                AlipayID: 'sd',
+                id: '2016-05-02',
                 name: '王小虎',
+                sort: '10',
+                style: '图文',
                 editDate: '17-4-26 12:45:25',
             }]
         }
@@ -50,6 +52,10 @@ export default {
 <style scoped>
 * {
     text-align: left;
+}
+
+ul {
+    list-style: none;
 }
 
 .msg-setting-box {
@@ -67,6 +73,10 @@ export default {
     float: right;
 }
 
+.el-table__fixed-right {
+    width: 20%;
+}
+
 .presentation {
     width: 60px;
     height: 40px;
@@ -81,12 +91,11 @@ export default {
     top: 1px;
 }
 
-.el-table_1_column_11 .el-button--text {
+.el-table_1_column_6 .el-button--text {
     color: #1f2d3d
 }
 
-.el-table_1_column_11 .el-button--text:hover {
+.el-table_1_column_6 .el-button--text:hover {
     color: #00aaef
 }
-
 </style>
