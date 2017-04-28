@@ -3,50 +3,38 @@
         <div class="relative">
             <div class="msg-box">
                 <h3 class="msg-setting-box">
-                        账号资料
-                        <BackAndRefresh/>
-                    </h3>
+                            发布公告
+                            <div class="moreaction">                            
+                                <a href="javascript:;" onclick="goback()"><i class="el-icon-arrow-left"></i>返回</a>
+                                <a href="javascript:;" onclick="refresh()"><i class="el-icon-loading"></i>刷新</a>
+                            </div>
+                        </h3>
                 <form action="" class="clearfix">
                     <div class="arrangement lineHeight">
-                        <span id="msgtitle">账号</span>
+                        <span id="msgtitle">公告内容</span>
                         <el-input v-model="id"></el-input>
                     </div>
                     <div class="arrangement">
-                        <span id="synopsis">手机</span>
+                        <span id="synopsis">公告开始时间</span>
                         <el-input v-model="phone"></el-input>
                     </div>
                     <div class="arrangement">
-                        <span id="coverImg">邮箱</span>
+                        <span id="coverImg">公告结束时间</span>
                         <el-input v-model="email"></el-input>
                     </div>
                     <div class="arrangement">
-                        <span id="synopsis">姓名/昵称</span>
-                        <el-input v-model="name"></el-input>
+                        <span id="synopsis">状态</span>
+                        <el-radio v-model="radio" label="1">启用</el-radio>
+                        <el-radio v-model="radio" label="2">禁用</el-radio>
+    
                     </div>
                     <div class="arrangement">
-                        <span id="coverImg">组织/公司</span>
-                        <el-input v-model="company"></el-input>
-                    </div>
-                    <div class="arrangement ">
-                        <span>地区</span>
-                        <el-select v-model="province" placeholder="请选择">
-                            <el-option v-for="item in cities" :label="item.label" :value="item.value">
-                                <span style="float: left">{{ item.label }}</span>
-                                <span style="float: right; color: #8492a6; font-size: 13px">{{ item.value }}</span>
-                            </el-option>
-                        </el-select>
-                        <el-select v-model="city" placeholder="请选择">
-                            <el-option v-for="item in cities" :label="item.label" :value="item.value">
-                                <span style="float: left">{{ item.label }}</span>
-                                <span style="float: right; color: #8492a6; font-size: 13px">{{ item.value }}</span>
-                            </el-option>
-                        </el-select>
-                        <el-select v-model="county" placeholder="请选择">
-                            <el-option v-for="item in cities" :label="item.label" :value="item.value">
-                                <span style="float: left">{{ item.label }}</span>
-                                <span style="float: right; color: #8492a6; font-size: 13px">{{ item.value }}</span>
-                            </el-option>
-                        </el-select>
+                        <span id="coverImg">发布位置</span>
+                        <el-checkbox-group v-model="checkList">
+                            <el-checkbox label="城市一网"></el-checkbox>
+                            <el-checkbox label="人社局"></el-checkbox>
+                            <el-checkbox label="旅游局"></el-checkbox>
+                        </el-checkbox-group>
                     </div>
                     <div class="arrangement submitBox">
                         <el-button type="primary">提交</el-button>
@@ -58,7 +46,6 @@
 </template>
 
 <script>
-import BackAndRefresh from './BackAndRefresh'
 export default {
     name: 'msg',
     data() {
@@ -66,7 +53,7 @@ export default {
             id: '',
             phone: '',
             email: '',
-            name: '',
+            radio: '1',
             company: '',
             province: '',
             city: '',
@@ -79,10 +66,8 @@ export default {
                 { value: 'Shenzhen', label: '深圳' },
                 { value: 'Guangzhou', label: '广州' }
             ],
+            checkList: []
         }
-    },
-    components: {
-        BackAndRefresh
     }
 }
 
@@ -155,8 +140,12 @@ textarea {
 }
 
 .arrangement .el-input {
-    padding: 10px;
+    padding: 0 10px;
     width: 22%;
+}
+
+.arrangement:nth-child(1) .el-input {
+    width: 50%;
 }
 
 .synopsis {
@@ -181,7 +170,15 @@ textarea {
     margin-left: 10px;
 }
 
+.el-radio {
+    margin-left: 10px;
+}
+
 .el-button {
     padding: 10px 50px;
+}
+
+.el-checkbox-group {
+    display: inline-block;
 }
 </style>

@@ -10,7 +10,11 @@ import MsgManagement from '../components/MsgManagement';
 import EditID from '../components/EditID'; 
 import SettledList from '../components/SettledList';
 import AddSettled from '../components/AddSettled';
-import Tags from '../components/TagsManagement'
+import articleList from '../components/articleList';
+import articleColumn from '../components/articleColumn';
+import BulletinList from '../components/BulletinList';
+import Announcement from '../components/Announcement';
+import TagsManagement from '../components/TagsManagement';
 
 
 Vue.use(Router)
@@ -28,6 +32,11 @@ export default new Router({
         { path: '/editId', component: EditID },
         { path: '/SettledList', component: SettledList },
         { path: '/AddSettled', component: AddSettled },
-        { path: '/tags', component: Tags }        
+        { path: '/articleList', component: articleList },
+        { path: '/articleColumn', component: articleColumn },
+        { path: '/BulletinList', component: BulletinList },
+        { path: '/Announcement', component: Announcement },
+        { path: '/TagsManagement', component: TagsManagement },
+
     ]
 })
