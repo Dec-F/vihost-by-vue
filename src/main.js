@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import router from './router/index';
 // import Vuex from 'vuex'
+import Mock from 'mockjs';
 
 import Index from './Index'
 
@@ -12,7 +13,6 @@ Vue.config.productionTip = false
 // Vue.use(Vuex)
 
 Vue.use(ElementUI)
-
 
 
 new Vue({

@@ -4,10 +4,7 @@
             <div class="msg-box">
                 <h3 class="msg-setting-box">
                         账号资料
-                        <div class="moreaction">
-                            <a href="javascript:;" onclick="goback()"><i class="el-icon-arrow-left"></i>返回</a>
-                            <a href="javascript:;" onclick="refresh()"><i class="el-icon-loading"></i>刷新</a>
-                        </div>
+                        <BackAndRefresh/>
                     </h3>
                 <form action="" class="clearfix">
                     <div class="arrangement lineHeight">
@@ -61,6 +58,7 @@
 </template>
 
 <script>
+import BackAndRefresh from './BackAndRefresh'
 export default {
     name: 'msg',
     data() {
@@ -82,6 +80,9 @@ export default {
                 { value: 'Guangzhou', label: '广州' }
             ],
         }
+    },
+    components: {
+        BackAndRefresh
     }
 }
 
