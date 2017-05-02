@@ -15,7 +15,7 @@ import articleColumn from '../components/articleColumn';
 import BulletinList from '../components/BulletinList';
 import Announcement from '../components/Announcement';
 import TagsManagement from '../components/TagsManagement';
-
+import DepartmentAccount from '../components/DepartmentAccount';
 
 Vue.use(Router)
 
@@ -37,6 +37,6 @@ export default new Router({
         { path: '/BulletinList', component: BulletinList },
         { path: '/Announcement', component: Announcement },
         { path: '/TagsManagement', component: TagsManagement },
-
+        { path: '/DepartmentAccount', component: DepartmentAccount },
     ]
 })

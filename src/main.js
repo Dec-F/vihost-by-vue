@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import router from './router/index';
 import Vuex from 'vuex'
-import Mock from 'mockjs';
+// import Mock from 'mockjs';
 
 import Index from './Index'
 
