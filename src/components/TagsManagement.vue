@@ -101,11 +101,7 @@ export default {
     color: #00aaef
 }
 
-=======
-
-<style scoped>
 .title-top{
     padding-top: 20px
 }
->>>>>>> 1da43f682681c4b406e97a1dbb3363504466d546
 </style>

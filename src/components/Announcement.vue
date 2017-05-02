@@ -3,12 +3,12 @@
         <div class="relative">
             <div class="msg-box">
                 <h3 class="msg-setting-box">
-                            发布公告
-                            <div class="moreaction">                            
-                                <a href="javascript:;" onclick="goback()"><i class="el-icon-arrow-left"></i>返回</a>
-                                <a href="javascript:;" onclick="refresh()"><i class="el-icon-loading"></i>刷新</a>
-                            </div>
-                        </h3>
+                    发布公告
+                    <div class="moreaction">                            
+                        <a href="javascript:;" @click="goback()"><i class="el-icon-arrow-left"></i>返回</a>
+                        <a href="javascript:;" @click="refresh()"><i class="el-icon-loading"></i>刷新</a>
+                    </div>
+                </h3>
                 <form action="" class="clearfix">
                     <div class="arrangement lineHeight">
                         <span id="msgtitle">公告内容</span>
