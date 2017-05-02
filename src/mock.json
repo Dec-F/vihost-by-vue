@@ -1,0 +1,127 @@
+{
+    "indexMessage": {
+        "inform": [
+            "可往集队式传此基常广主少周快器。",
+            "六改国员学有子张据回月证进。"
+        ],
+        "leaveWords": [
+            {
+                "word": "习验每历增取",
+                "userName": "李敏"
+            },
+            {
+                "word": "电作格方极",
+                "userName": "林刚"
+            }
+        ],
+        "subscribe": [
+            {
+                "word": "格通九铁",
+                "userName": "许超",
+                "date": "1978-09-15"
+            },
+            {
+                "word": "她管你身思精",
+                "userName": "杨娜",
+                "date": "1976-07-01"
+            }
+        ]
+    },
+    "indexConfig": {
+        "title": "城市一网",
+        "url": "http://kangle.zj.com",
+        "coverImg": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHgAAABaCAYAAABzAJLvAAAGUklEQ…eYARN3gLg8TjADJu4AcXmcYAZM3AHi8jjBDJi4A8Tl/QNxO02qRjINegAAAABJRU5ErkJggg=="
+    },
+    "menuConfig": {
+        "chatDisplay": true,
+        "menu": [
+            {
+                "name": "术思深间",
+                "child": []
+            }
+        ]
+    },
+    "replyConfig": {
+        "welcomeMessage": "决海全各间管复利叫书上元七度。",
+        "keywordReplyConfig": [
+            {
+                "keyword": "气地平名",
+                "name": "者九是老",
+                "replyMessage": "持好质见写圆她带队百成特两治从经。"
+            }
+        ],
+        "allReplyConfig": "样有委较真导京期世听断员收会调影。"
+    },
+    "notice": [
+        {
+            "id": 1,
+            "content": "资团几展风",
+            "publisher": "侯敏",
+            "publishDate": "2007-06-04",
+            "startDate": "1995-01-22",
+            "endDate": "1983-09-26",
+            "status": true,
+            "PV": 4767912082046956
+        },
+        {
+            "id": 2,
+            "content": "类只育变干",
+            "publisher": "秦艳",
+            "publishDate": "1976-05-13",
+            "startDate": "2011-03-01",
+            "endDate": "2005-10-25",
+            "status": false,
+            "PV": -6557733217912604
+        }
+    ],
+    "artcle": [
+        {
+            "type": "indirect",
+            "classification": "",
+            "title": "装明局们少先",
+            "img": "http://dummyimage.com/336x280",
+            "id": 1
+        },
+        {
+            "type": "indirect",
+            "classification": "",
+            "title": "民么效",
+            "img": "http://dummyimage.com/120x240",
+            "id": 2
+        }
+    ],
+    "enterDepartment": [
+        {
+            "name": "Dljlnanx Rfk Hkvbuxt Ngxgrgc Xcxnhq Ulopnes Xdphmlqvw",
+            "serviceStatus": true,
+            "HQD": true,
+            "appStatus": false
+        },
+        {
+            "name": "Htvkdj Nwxbbd Qozwyptmgy Lhlwnoly Gdm",
+            "serviceStatus": false,
+            "HQD": true,
+            "appStatus": false
+        },
+        {
+            "name": "Frshnmk Aymmljev Xdvfyv Peqkuibx Ovtsivz",
+            "serviceStatus": false,
+            "HQD": true,
+            "appStatus": true
+        },
+        {
+            "name": "Djtglux Wjpxfrqgbh Gilzkxe Nppmof",
+            "serviceStatus": false,
+            "HQD": false,
+            "appStatus": false
+        }
+    ],
+    "QR": {
+        "url": "tn3270://fuvkopnwvc.sg/haunqcf"
+    },
+    "userAndPassword": {
+        "accound": "Jgfapg Firgl Xrhioyudn Bnjzleiu Ogrimndrhz Quewvo Nvrmb",
+        "phone": 2576721306313054
+    },
+    "departmentUser": {}
+}
