@@ -68,10 +68,10 @@
                         <el-menu-item index="v-8-2" class='menu-mixin'>添加部门入驻</el-menu-item>
                     </router-link>
                 </el-submenu>
-                <router-link to='/msgmanagement'>
+                <router-link to='/editID'>
                     <el-menu-item index="v-9" class="icon-wrap">修改账号资料</el-menu-item>
                 </router-link>
-                <router-link to='/editId'>
+                <router-link to='/msgmanagement'>
                     <el-menu-item index="v-10" class="icon-wrap">部门账号管理</el-menu-item>
                 </router-link>
             </el-menu>
