@@ -78,11 +78,9 @@
     
         </el-col>
         <router-view>
-            <!--<MainContent></MainContent>-->
+
         </router-view>
-        <!--<DepartmentIndex></DepartmentIndex>-->
-        <!--<MenuManagement></MenuManagement>-->
-        <!--<Reply></Reply>-->
+
     </div>
 </template>
 <script>
@@ -99,12 +97,7 @@ export default {
             console.log(key, keyPath);
         }
     },
-    // components:{
-    //     MainContent,
-    //     DepartmentIndex,
-    //     MenuManagement,
-    //     Reply
-    // }
+
 }
 </script>
 

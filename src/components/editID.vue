@@ -3,13 +3,13 @@
         <div class="relative">
             <div class="msg-box">
                 <h3 class="msg-setting-box">
-                        账号资料
-                        <BackAndRefresh/>
-                    </h3>
+                            账号资料
+                            <BackAndRefresh/>
+                        </h3>
                 <form action="" class="clearfix">
                     <div class="arrangement lineHeight">
                         <span id="msgtitle">账号</span>
-                        <el-input v-model="id"></el-input>
+                        <el-input v-model="account"></el-input>
                     </div>
                     <div class="arrangement">
                         <span id="synopsis">手机</span>
@@ -29,24 +29,8 @@
                     </div>
                     <div class="arrangement ">
                         <span>地区</span>
-                        <el-select v-model="province" placeholder="请选择">
-                            <el-option v-for="item in cities" :label="item.label" :value="item.value">
-                                <span style="float: left">{{ item.label }}</span>
-                                <span style="float: right; color: #8492a6; font-size: 13px">{{ item.value }}</span>
-                            </el-option>
-                        </el-select>
-                        <el-select v-model="city" placeholder="请选择">
-                            <el-option v-for="item in cities" :label="item.label" :value="item.value">
-                                <span style="float: left">{{ item.label }}</span>
-                                <span style="float: right; color: #8492a6; font-size: 13px">{{ item.value }}</span>
-                            </el-option>
-                        </el-select>
-                        <el-select v-model="county" placeholder="请选择">
-                            <el-option v-for="item in cities" :label="item.label" :value="item.value">
-                                <span style="float: left">{{ item.label }}</span>
-                                <span style="float: right; color: #8492a6; font-size: 13px">{{ item.value }}</span>
-                            </el-option>
-                        </el-select>
+                        <el-cascader size="small" :options="options" v-model="prefecture" @change='ss' expand-trigger="hover" style="width:22%;margin-left:10px">
+                        </el-cascader>
                     </div>
                     <div class="arrangement submitBox">
                         <el-button type="primary">提交</el-button>
@@ -59,26 +43,24 @@
 
 <script>
 import BackAndRefresh from './BackAndRefresh'
+import {regionData} from 'element-china-area-data'
+
+// import { mapState } from 'Vuex';
+
 export default {
     name: 'msg',
     data() {
+        // console.log(JSON.stringify(this.$store.state));
         return {
-            id: '',
-            phone: '',
-            email: '',
-            name: '',
-            company: '',
-            province: '',
-            city: '',
-            county: '',
-            cities: [
-                { value: 'Beijing', label: '北京' },
-                { value: 'Shanghai', label: '上海' },
-                { value: 'Nanjing', label: '南京' },
-                { value: 'Chengdu', label: '成都' },
-                { value: 'Shenzhen', label: '深圳' },
-                { value: 'Guangzhou', label: '广州' }
-            ],
+            ...this.$store.state.userAndPassword,
+            options: regionData,
+            s:1
+        }
+    },
+    methods:{
+        ss(val){
+            // console.log(this.prefecture,this.$store.state);
+            this.$store.commit('save_userInformation',this.prefecture)
         }
     },
     components: {
