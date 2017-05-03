@@ -71,7 +71,7 @@
                 <router-link to='/editID'>
                     <el-menu-item index="v-9" class="icon-wrap">修改账号资料</el-menu-item>
                 </router-link>
-                <router-link to='/msgmanagement'>
+                <router-link to='/DepartmentAccount'>
                     <el-menu-item index="v-10" class="icon-wrap">部门账号管理</el-menu-item>
                 </router-link>
             </el-menu>
