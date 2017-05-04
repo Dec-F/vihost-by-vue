@@ -41,7 +41,7 @@
     </div>
 </template>
 <script>
-import ReplyTextarea from './ReplyTextarea';
+import ReplyTextarea from 'components/ReplyTextarea';
 export default {
     data() {
         return {

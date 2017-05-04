@@ -42,7 +42,7 @@
 </template>
 
 <script>
-import BackAndRefresh from './BackAndRefresh'
+import BackAndRefresh from 'components/BackAndRefresh'
 import {regionData} from 'element-china-area-data'
 
 // import { mapState } from 'Vuex';

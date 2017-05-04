@@ -1,21 +1,21 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 // import Hello from '@/components/Hello'
-import MainContent from '../components/Main';
-import DepartmentIndex from '../components/DepartmentIndex';
-import MenuManagement from '../components/MenuManagement';
-import Reply from '../components/Reply.vue';
-import QR from '../components/QR';
-import MsgManagement from '../components/MsgManagement';
-import EditID from '../components/EditID'; 
-import SettledList from '../components/SettledList';
-import AddSettled from '../components/AddSettled';
-import articleList from '../components/articleList';
-import articleColumn from '../components/articleColumn';
-import BulletinList from '../components/BulletinList';
-import Announcement from '../components/Announcement';
-import TagsManagement from '../components/TagsManagement';
-import DepartmentAccount from '../components/DepartmentAccount';
+import MainContent from 'pages/Main';
+import DepartmentIndex from 'pages/DepartmentIndex';
+import MenuManagement from 'pages/MenuManagement';
+import Reply from 'pages/Reply.vue';
+import QR from 'pages/QR';
+import MsgManagement from 'pages/MsgManagement';
+import EditID from 'pages/EditID'; 
+import SettledList from 'pages/SettledList';
+import AddSettled from 'pages/AddSettled';
+import articleList from 'pages/articleList';
+import articleColumn from 'pages/articleColumn';
+import BulletinList from 'pages/BulletinList';
+import Announcement from 'pages/Announcement';
+import TagsManagement from 'pages/TagsManagement';
+import DepartmentAccount from 'pages/DepartmentAccount';
 
 Vue.use(Router)
 
