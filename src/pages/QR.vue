@@ -9,7 +9,7 @@
                     <el-button>上传中间图片</el-button>
                 </el-col>
             </el-row>
-            <el-row style="marginTop:50px">
+            <el-row style="margin:50px 0 0 125px">
                 <el-col :span='9'>
                     <img src="" alt="" style="background:#000000;width:300px;height:300px;">
                 </el-col>
