@@ -1,7 +1,7 @@
 <template>
     <div class="wrap">
         <el-menu theme="dark" :default-active="activeIndex" mode="horizontal" menu-trigger='click' class="h-nav">
-            <router-link to='/'>
+            <router-link to='/index'>
                 <el-menu-item index="1">服务窗管理平台</el-menu-item>
             </router-link>
             <el-submenu index="2">
@@ -14,7 +14,7 @@
         </el-menu>
         <el-col :span='3' class="v-nav">
             <el-menu theme='dark' mode='vertical' menu-trigger='click' :unique-opened="true">
-                <router-link to='/'>
+                <router-link to='/index'>
                     <el-menu-item index="v-1" class=''>后台首页</el-menu-item>
                 </router-link>
                 <router-link to='/depart'>

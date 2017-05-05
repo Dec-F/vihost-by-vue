@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 // import Hello from '@/components/Hello'
+import Login from 'pages/Login';
+import Index from 'pages/Index';
 import MainContent from 'pages/Main';
 import DepartmentIndex from 'pages/DepartmentIndex';
 import MenuManagement from 'pages/MenuManagement';
@@ -23,7 +25,11 @@ export default new Router({
     mode: 'history',
     base: __dirname,
     routes: [
-        { path: '/', component: MainContent },
+ 
+        { path: '/', component: Login },
+        { path: '/index', component: Index,
+        children:[
+        { path: '', component: MainContent },
         { path: '/depart', component: DepartmentIndex },
         { path: '/menu', component: MenuManagement },
         { path: '/reply', component: Reply },
@@ -38,5 +44,7 @@ export default new Router({
         { path: '/Announcement', component: Announcement },
         { path: '/TagsManagement', component: TagsManagement },
         { path: '/DepartmentAccount', component: DepartmentAccount },
+        ]
+     }
     ]
 })

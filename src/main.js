@@ -3,7 +3,7 @@ import router from './router';
 import store from './store';
 // import Mock from 'mockjs';
 
-import Index from './Index'
+import Index from './App'
 
 
 import ElementUI from 'element-ui';
