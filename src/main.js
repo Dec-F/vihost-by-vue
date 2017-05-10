@@ -1,6 +1,9 @@
 import Vue from 'vue'
 import router from './router';
 import store from './store';
+import axios from 'axios';
+import VueAxios from 'vue-axios';
+import {mock} from './mock'
 // import Mock from 'mockjs';
 
 import Index from './App'
@@ -14,6 +17,8 @@ Vue.config.productionTip = false
 
 
 Vue.use(ElementUI)
+Vue.use(VueAxios,axios)
+
 
 
 
@@ -24,3 +29,4 @@ new Vue({
   template:'<Index/>',
   components:{ Index }
 })
+mock()
