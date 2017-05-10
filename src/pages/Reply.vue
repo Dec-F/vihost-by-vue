@@ -2,37 +2,43 @@
     <div class="relative-wrap">
         <div class="relative">
             <div class="msg-box">
-                <h3 class="msg-setting-box">标签管理
-                        <div class="moreaction">
-                            <a href="javascript:;" @click="goback()"><i class="el-icon-arrow-left"></i>返回</a>
-                            <a href="javascript:;" @click="refresh()"><i class="el-icon-loading"></i>刷新</a>
-                        </div>
-                    </h3>
+                <h3 class="msg-setting-box">
+                    标签管理
+                    <BackAndRefresh/>
+                </h3>
                 <el-tabs v-model="activeName" type="card" style="width:80%;">
                     <el-tab-pane label="关注欢迎语" name="first">
-                        <Reply-textarea></Reply-textarea>
+                        <ReplyTextarea></ReplyTextarea>
                     </el-tab-pane>
                     <el-tab-pane label="关键词自动回复" name="second">
-                        <el-button type="success" @click="addRule()">创建新规则</el-button>
+                        <el-button type="success" @click="flag = !flag" v-show="!flag">创建新规则</el-button>
                         <br>
-                        <el-row :gutter="20" style="line-height: 40px; margin: 10px 0;">
-                            <el-col :span="3" style="text-align:right;">规则名称</el-col>
-                            <el-col :span="20">
-                                <el-input v-model="ruleName"></el-input>
-                            </el-col>    
-                        </el-row>
-                        <el-row :gutter="20" style="line-height: 40px; margin: 10px 0;">
-                            <el-col :span="3" style="text-align:right;">关键词</el-col>
-                            <el-col :span="20">
-                                <el-input v-model="keyword"></el-input>
-                            </el-col>    
-                        </el-row>
-                        <el-row :gutter="20" style="line-height: 34px; margin: 10px 0;">
-                            <el-col :span="3" style="text-align:right;">关键词</el-col>
-                            <el-col :span="20">
-                                <Reply-textarea></Reply-textarea>
-                            </el-col>    
-                        </el-row>
+                        <transition name="fade">
+                            <form v-show="flag">
+                                <el-row :gutter="20" class="span1">
+                                    <el-col :span="3" class="tx-r">规则名称</el-col>
+                                    <el-col :span="20" style="position:relative;">
+                                        <el-input v-model="ruleName" placeholder="最多30字,不能为空" maxlength="30" @change="lastw()" autofocus @focus="titleLWShow = true" @blur="titleLWShow = false"></el-input>
+                                        <span v-show="titleLWShow" class="lastWord-box">还可以再输入 <label class="lastWord1">{{titleLastW}}</label> 字</span>
+                                    </el-col>
+                                </el-row>
+                                <el-row :gutter="20" class="span1">
+                                    <el-col :span="3" class="tx-r">关键词</el-col>
+                                    <el-col :span="20">
+                                        <div class="keyword-box">
+                                            <span v-for="(val, index) in keywordArr" @click="keywordArr.splice(index, 1)">{{val}}</span>
+                                            <el-input v-show="inpShow" v-model="keyword" @keyup.enter.native="smkeyword()" placeholder="最多10个关键词，用回车分隔，不能为空"></el-input>
+                                        </div>
+                                    </el-col>
+                                </el-row>
+                                <el-row :gutter="20" class="span1">
+                                    <el-col :span="3" class="tx-r">关键词</el-col>
+                                    <el-col :span="20">
+                                        <ReplyTextarea></ReplyTextarea>
+                                    </el-col>
+                                </el-row>
+                            </form>
+                        </transition>
                     </el-tab-pane>
                     <el-tab-pane label="无匹配自动回复" name="third">dfgg</el-tab-pane>
                 </el-tabs>
@@ -42,31 +48,57 @@
 </template>
 <script>
 import ReplyTextarea from 'components/ReplyTextarea';
+import BackAndRefresh from 'components/BackAndRefresh'
 export default {
     data() {
         return {
             activeName: 'second',
             ruleName: '',
-            keyword: ''
+            keyword: '',
+            keywordArr: [], 
+            flag: false,
+            titleLastW: 30,
+            inpShow: true,
+            titleLWShow: false
         }
     },
-    components: { ReplyTextarea },
+    components: { 
+        ReplyTextarea,
+        BackAndRefresh
+    },
     methods: {
-        addRule: function () {
-
-        }
+        lastw: function () {
+            this.titleLastW = '30' - this.ruleName.length;
+        },
+        smkeyword: function () {            
+            const keyword = this.keyword.trim();
+            if (!keyword) {
+                return false;
+            }
+            this.keywordArr.push(this.keyword);            
+            this.keyword = '';  
+             
+        },
+        // chang: function () {
+        //     if (this.keywordArr.length >= 10) {
+        //         this.inpShow = false;
+        //     } else {
+        //         this.inpShow = true;
+        //     }  
+        // }
     }
 }
 
 </script>
 <style scoped>
-.show {
-    display: none;
+.tx-r {
+    text-align: right;
 }
 
 * {
     text-align: left;
     list-style: none;
+    font-size: 14px;
 }
 
 .msg-setting-box {
@@ -80,13 +112,46 @@ export default {
     padding: 15px;
 }
 
-.moreaction {
-    float: right;
-    font-weight: 200;
-    font-size: 16px;
+.span1 {
+    line-height: 34px;
+    margin: 10px 0;
 }
 
-img {
-    vertical-align: middle;
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity .5s
+}
+
+.fade-enter,
+.fade-leave-active {
+    opacity: 0
+}
+
+.lastWord-box {
+    font-size: 14px;
+    margin-right: 20px;
+    position: absolute;
+    top: 0;
+    right: 10px;
+}
+.lastWord1 {
+    color: #F25835;
+}
+
+.keyword-box {
+    border-radius: 4px;
+    border: 1px solid #bfcbd9;
+    box-sizing: border-box;
+}
+
+.keyword-box span {
+    word-break: break-word;
+    cursor: pointer;
+    color: #08c;
+    margin: 0 10px;
+}
+
+.keyword-box span:hover {
+    text-decoration: line-through;
 }
 </style>

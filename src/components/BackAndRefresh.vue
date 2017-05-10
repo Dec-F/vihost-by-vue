@@ -19,6 +19,16 @@ export default {
 </script>
 
 <style scoped>
+
+.moreaction {
+    float: right;
+    font-weight: 200;
+    font-size: 16px;
+}
+
+img {
+    vertical-align: middle;
+}
 .moreaction a {
     font-size: 16px;
     font-weight: 400;
