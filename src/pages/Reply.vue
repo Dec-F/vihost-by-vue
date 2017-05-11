@@ -6,9 +6,9 @@
                     标签管理
                     <BackAndRefresh/>
                 </h3>
-                <el-tabs v-model="activeName" type="card" style="width:80%;">
+                <el-tabs v-model="activeName" type="card" style="width:80%;margin-left: 50px;">
                     <el-tab-pane label="关注欢迎语" name="first">
-                        <ReplyTextarea></ReplyTextarea>
+                        <ReplyTextarea :textareVal="!flagnew"></ReplyTextarea>
                     </el-tab-pane>
                     <el-tab-pane label="关键词自动回复" name="second">
                         <el-button type="success" @click="flag = !flag" v-show="!flag">创建新规则</el-button>
@@ -25,8 +25,8 @@
                                 <el-row :gutter="20" class="span1">
                                     <el-col :span="3" class="tx-r">关键词</el-col>
                                     <el-col :span="20">
-                                        <div class="keyword-box">
-                                            <span v-for="(val, index) in keywordArr" @click="keywordArr.splice(index, 1)">{{val}}</span>
+                                        <div :class="{'keyword-box': isShow}">
+                                            <span v-for="(val, index) in keywordArr" @click="delKeyword(index)">{{val}}</span>
                                             <el-input v-show="inpShow" v-model="keyword" @keyup.enter.native="smkeyword()" placeholder="最多10个关键词，用回车分隔，不能为空"></el-input>
                                         </div>
                                     </el-col>
@@ -34,13 +34,15 @@
                                 <el-row :gutter="20" class="span1">
                                     <el-col :span="3" class="tx-r">关键词</el-col>
                                     <el-col :span="20">
-                                        <ReplyTextarea></ReplyTextarea>
+                                        <ReplyTextarea :textareVal="flagnew"></ReplyTextarea>
                                     </el-col>
                                 </el-row>
                             </form>
                         </transition>
                     </el-tab-pane>
-                    <el-tab-pane label="无匹配自动回复" name="third">dfgg</el-tab-pane>
+                    <el-tab-pane label="无匹配自动回复" name="third">
+                        <ReplyTextarea :textareVal="!flagnew"></ReplyTextarea>
+                    </el-tab-pane>
                 </el-tabs>
             </div>
         </div>
@@ -52,14 +54,16 @@ import BackAndRefresh from 'components/BackAndRefresh'
 export default {
     data() {
         return {
-            activeName: 'second',
+            activeName: 'first',
             ruleName: '',
             keyword: '',
             keywordArr: [], 
             flag: false,
             titleLastW: 30,
             inpShow: true,
-            titleLWShow: false
+            titleLWShow: false,
+            isShow: false,
+            flagnew: false,
         }
     },
     components: { 
@@ -70,22 +74,29 @@ export default {
         lastw: function () {
             this.titleLastW = '30' - this.ruleName.length;
         },
-        smkeyword: function () {            
+        smkeyword: function () { 
+            this.isShow = true;           
             const keyword = this.keyword.trim();
             if (!keyword) {
                 return false;
             }
             this.keywordArr.push(this.keyword);            
             this.keyword = '';  
-             
+            if (this.keywordArr.length >= 10) {
+                this.inpShow = !this.inpShow;
+            }
         },
-        // chang: function () {
-        //     if (this.keywordArr.length >= 10) {
-        //         this.inpShow = false;
-        //     } else {
-        //         this.inpShow = true;
-        //     }  
-        // }
+        delKeyword: function (index) {
+            this.keywordArr.splice(index, 1);
+            if (this.keywordArr.length >= 10) {
+                this.inpShow = false;
+            } else {
+                this.inpShow = true;
+            } 
+            if (this.keywordArr.length == 0) {
+                this.isShow = false;    
+            }
+        }       
     }
 }
 

@@ -18,6 +18,7 @@ import BulletinList from 'pages/BulletinList';
 import Announcement from 'pages/Announcement';
 import TagsManagement from 'pages/TagsManagement';
 import DepartmentAccount from 'pages/DepartmentAccount';
+import AddArticle from 'pages/AddArticle';
 
 Vue.use(Router)
 
@@ -44,6 +45,7 @@ export default new Router({
         { path: '/Announcement', component: Announcement },
         { path: '/TagsManagement', component: TagsManagement },
         { path: '/DepartmentAccount', component: DepartmentAccount },
+        { path: '/AddArticle', component: AddArticle },
         ]
      }
     ]
