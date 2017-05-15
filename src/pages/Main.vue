@@ -12,7 +12,8 @@
                     <figure style="float:left">
                         <img src="" alt="头像" style='width:70px;height:75px'>
                         <figcaption>
-                            <span><i></i>设置</span>
+                            <span>
+                                <i></i>设置</span>
                         </figcaption>
                     </figure>
                     <br/>
@@ -91,9 +92,9 @@
                 <el-col :span='5'>
                 </el-col>
                 <!--<el-col :span='5' :offset='5'>
-                <i class='el-icon-setting'></i>
-                <span>站点配置</span>
-            </el-col>-->
+                    <i class='el-icon-setting'></i>
+                    <span>站点配置</span>
+                </el-col>-->
                 <el-col :span='5' :offset='10'>
                     <i class='el-icon-setting'></i>
                     <span>站点配置</span>
@@ -107,32 +108,56 @@
                 <el-col :span='5'>
                 </el-col>
                 <!--<el-col :span='5' :offset='5'>
-                <i class='el-icon-setting'></i>
-                <span>站点配置</span>
-            </el-col>-->
+                    <i class='el-icon-setting'></i>
+                    <span>站点配置</span>
+                </el-col>-->
                 <!--<el-col :span='5'>
-                <i class='el-icon-setting'></i>
-                <span>站点配置</span>
-            </el-col>-->
+                    <i class='el-icon-setting'></i>
+                    <span>站点配置</span>
+                </el-col>-->
             </el-row>
             <div class="content-box">
                 <h5>新产品与服务动态</h5>
                 <a href="#">更多动态</a>
                 <ul class="dynamic clear-fix">
-                    <li><i class="el-icon-setting"></i><span>为调研</span></li>
-                    <li><i class="el-icon-setting"></i><span>为调研</span></li>
-                    <li><i class="el-icon-setting"></i><span>为调研</span></li>
-                    <li><i class="el-icon-setting"></i><span>为调研</span></li>
+                    <li>
+                        <i class="el-icon-setting"></i>
+                        <span>为调研</span>
+                    </li>
+                    <li>
+                        <i class="el-icon-setting"></i>
+                        <span>为调研</span>
+                    </li>
+                    <li>
+                        <i class="el-icon-setting"></i>
+                        <span>为调研</span>
+                    </li>
+                    <li>
+                        <i class="el-icon-setting"></i>
+                        <span>为调研</span>
+                    </li>
                 </ul>
             </div>
             <div class="content-box">
                 <h5>新产品与服务动态</h5>
                 <a href="#">更多动态</a>
                 <ul class="dynamic clear-fix">
-                    <li><i class="el-icon-setting"></i><span>为调研</span></li>
-                    <li><i class="el-icon-setting"></i><span>为调研</span></li>
-                    <li><i class="el-icon-setting"></i><span>为调研</span></li>
-                    <li><i class="el-icon-setting"></i><span>为调研</span></li>
+                    <li>
+                        <i class="el-icon-setting"></i>
+                        <span>为调研</span>
+                    </li>
+                    <li>
+                        <i class="el-icon-setting"></i>
+                        <span>为调研</span>
+                    </li>
+                    <li>
+                        <i class="el-icon-setting"></i>
+                        <span>为调研</span>
+                    </li>
+                    <li>
+                        <i class="el-icon-setting"></i>
+                        <span>为调研</span>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -141,7 +166,11 @@
 
 <script>
 export default {
-    name: 'main'
+    name: 'main',
+
+    methods: {
+
+    }
 
 }
 </script>

@@ -63,10 +63,11 @@ const tem = {
         url: '@url'
     },
     userAndPassword: {
-        accound: '@word',
+        account: '@word',
         phone: '@natural',
         email: '@email',
-        name: '@cname'
+        name: '@cname',
+        compony: '@cname'
     },
     departmentUser: {}
 }

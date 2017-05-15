@@ -21,7 +21,9 @@
                     <el-menu-item index="v-2" class=''>首页管理</el-menu-item>
                 </router-link>
                 <router-link to='/qr'>
-                    <el-menu-item index='v-3' class="icon-wrap">二维码<i class='el-icon-picture icon-item'></i></el-menu-item>
+                    <el-menu-item index='v-3' class="icon-wrap">二维码
+                        <i class='el-icon-picture icon-item'></i>
+                    </el-menu-item>
                 </router-link>
                 <el-submenu index="v-4">
                     <span slot="title">服务窗</span>
@@ -38,7 +40,7 @@
                         <el-menu-item index="v-5-1" class='menu-mixin'>标签管理</el-menu-item>
                     </router-link>
                     <!--<router-link to='/'>-->
-                        <el-menu-item index="v-5-2" class='menu-mixin'>用户列表</el-menu-item>
+                    <el-menu-item index="v-5-2" class='menu-mixin'>用户列表</el-menu-item>
                     <!--</router-link>-->
                 </el-submenu>
                 <el-submenu index="v-6">
@@ -78,9 +80,9 @@
     
         </el-col>
         <router-view>
-
+    
         </router-view>
-
+    
     </div>
 </template>
 <script>
@@ -96,6 +98,9 @@ export default {
         handleSelect(key, keyPath) {
             console.log(key, keyPath);
         }
+    },
+    beforeCreate() {
+        this.$store.dispatch('login')
     },
 
 }

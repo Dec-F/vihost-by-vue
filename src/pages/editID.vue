@@ -3,9 +3,9 @@
         <div class="relative">
             <div class="msg-box">
                 <h3 class="msg-setting-box">
-                            账号资料
-                            <BackAndRefresh/>
-                        </h3>
+                    账号资料
+                    <BackAndRefresh/>
+                </h3>
                 <form action="" class="clearfix">
                     <div class="arrangement lineHeight">
                         <span id="msgtitle">账号</span>
@@ -43,8 +43,8 @@
 
 <script>
 import BackAndRefresh from 'components/BackAndRefresh'
-import {regionData} from 'element-china-area-data'
-
+import { regionData } from 'element-china-area-data'
+import { mapGetters } from 'vuex';
 // import { mapState } from 'Vuex';
 
 export default {
@@ -52,16 +52,21 @@ export default {
     data() {
         // console.log(JSON.stringify(this.$store.state));
         return {
-            ...this.$store.state.userAndPassword,
-            options: regionData,
-            s:1
+           
         }
     },
-    methods:{
-        ss(val){
+    methods: {
+        ss(val) {
             // console.log(this.prefecture,this.$store.state);
-            this.$store.commit('save_userInformation',this.prefecture)
+            this.$store.commit('save_userInformation', this.prefecture)
         }
+    },
+    computed:{
+        ...mapGetters([
+            'name',
+            'phone',
+            'account'
+        ])
     },
     components: {
         BackAndRefresh
