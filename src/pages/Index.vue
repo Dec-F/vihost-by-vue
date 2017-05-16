@@ -99,9 +99,7 @@ export default {
             console.log(key, keyPath);
         }
     },
-    beforeCreate() {
-        this.$store.dispatch('login')
-    },
+
 
 }
 </script>

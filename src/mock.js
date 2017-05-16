@@ -73,5 +73,13 @@ const tem = {
 }
 
 export const mock= function() {
-    Mock.mock('1.1.1.1',tem)
+    Mock.mock('/login',{
+        userToken:'dec_fan',
+        name:'dec_fan',
+        email:'dec_fan@icloud.com',
+        avatar:'@image',
+        setting:{
+
+        }
+    })
 }

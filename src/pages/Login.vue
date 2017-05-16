@@ -71,16 +71,16 @@ export default {
                             message: '登录错误，如有需要，请联系管理员'
                         })
                     })
-                    
-        } else {
-            this.$message({
-                type: 'error',
-                message: '格式错误'
-            })
+
+                } else {
+                    this.$message({
+                        type: 'error',
+                        message: '格式错误'
+                    })
                     return false;
+                }
+            });
         }
-    });
-}
     }
 }
 </script>

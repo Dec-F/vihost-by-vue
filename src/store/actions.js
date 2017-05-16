@@ -1,7 +1,8 @@
 import axios from 'axios';
+import {loginByEmail} from '../resquest/login';
 export default{
-    login ({commit,state},formData){
-        return axios.post('1.1.1.1',formData).then((res) => {
+    login ({commit},formData){
+        loginByEmail(formData).then((res)=>{
             commit('login',res.data)
         })
     }
