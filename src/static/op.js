@@ -437,7 +437,7 @@ const option = {
                 borderColor: '#111'
             },
             emphasis: {
-                areaColor: '#2a333d'
+                areaColor: '#20A0FF'
             }
         }
     },

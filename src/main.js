@@ -19,7 +19,13 @@ Vue.config.productionTip = false
 Vue.use(ElementUI)
 Vue.use(VueAxios,axios)
 
-
+router.beforeEach((to,from,next)=>{
+console.log(from.path,to.path);
+  if(store.state.userToken && !store.state.name){
+      store.dispatch('login',store.state.userToken).then(next);
+    }
+    next()
+})
 
 
 new Vue({
