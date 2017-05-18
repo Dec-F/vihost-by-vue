@@ -16,6 +16,12 @@ Vue.config.productionTip = false
 
 
 Vue.use(ElementUI)
+
+Vue.use(VueProgressBar, {
+  color: 'rgb(143, 255, 199)',
+  failedColor: 'red',
+  height: '2px'
+})
 router.beforeEach((to,from,next)=>{
   if(store.state.userToken && !store.state.name){
       store.dispatch('login',store.state.userToken).then(next);
@@ -24,11 +30,14 @@ router.beforeEach((to,from,next)=>{
 })
 router.afterEach( route => {
 })
-new Vue({
+
+const vm = new Vue({
   el:'#app',
   store,
   router,
   template:'<Index/>',
   components:{ Index }
 })
+
+
 mock()

@@ -79,6 +79,7 @@
             </el-menu>
     
         </el-col>
+        <vue-progress-bar></vue-progress-bar>
         <router-view>
     
         </router-view>
@@ -87,6 +88,12 @@
 </template>
 <script>
 export default {
+    beforeMount () {
+        this.$Progress.start()
+    },
+    mounted () {
+        this.$Progress.finish()  
+    },
     data() {
 
         return {
