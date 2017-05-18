@@ -78,6 +78,10 @@ export const mock= function() {
         name:'dec_fan',
         email:'dec_fan@icloud.com',
         avatar:'@image',
+        account:'dec_fan@icloud.com',
+        phone:'17703668430',
+        company:'灵猫',
+        area: ["120000", "120100","120101"],
         setting:{
 
         }

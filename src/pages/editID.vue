@@ -4,7 +4,7 @@
             <div class="msg-box">
                 <h3 class="msg-setting-box">
                     账号资料
-                    <BackAndRefresh/>
+                    <backAndRefresh/>
                 </h3>
                 <form action="" class="clearfix">
                     <div class="arrangement lineHeight">
@@ -29,7 +29,7 @@
                     </div>
                     <div class="arrangement ">
                         <span>地区</span>
-                        <el-cascader size="small" :options="options" v-model="prefecture" @change='ss' expand-trigger="hover" style="width:22%;margin-left:10px">
+                        <el-cascader size="small" :options="options" v-model="area" @change='ss' expand-trigger="hover" style="width:22%;margin-left:10px">
                         </el-cascader>
                     </div>
                     <div class="arrangement submitBox">
@@ -44,7 +44,7 @@
 <script>
 import BackAndRefresh from 'components/BackAndRefresh'
 import { regionData } from 'element-china-area-data'
-import { mapGetters } from 'vuex';
+import { mapState } from 'vuex';
 // import { mapState } from 'Vuex';
 
 export default {
@@ -52,22 +52,30 @@ export default {
     data() {
         // console.log(JSON.stringify(this.$store.state));
         return {
-           
+            options: regionData
+            // name: '',
+            // email: '',
+            // account: '',
+            // phone: '',
+            // company: '',
+            // area: []
         }
     },
     methods: {
         ss(val) {
             // console.log(this.prefecture,this.$store.state);
-            this.$store.commit('save_userInformation', this.prefecture)
+            this.$store.commit('save_userInformation', this.area)
         }
     },
-    computed:{
-        ...mapGetters([
-            'name',
-            'phone',
-            'account'
-        ])
-    },
+    computed: mapState([
+        
+        'account',
+        'phone',
+        'company',
+        'area',
+        'name',
+        'email',
+    ]),
     components: {
         BackAndRefresh
     }

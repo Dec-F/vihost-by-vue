@@ -5,11 +5,10 @@ import axios from 'axios';
 import VueAxios from 'vue-axios';
 import {mock} from './mock'
 // import Mock from 'mockjs';
-
 import Index from './App'
 
-
-import ElementUI from 'element-ui';
+import VueProgressBar from 'vue-progressbar'
+import ElementUI,{Message,Progress} from 'element-ui';
 import 'element-ui/lib/theme-default/index.css'
 
 
@@ -17,17 +16,14 @@ Vue.config.productionTip = false
 
 
 Vue.use(ElementUI)
-Vue.use(VueAxios,axios)
-
 router.beforeEach((to,from,next)=>{
-console.log(from.path,to.path);
   if(store.state.userToken && !store.state.name){
       store.dispatch('login',store.state.userToken).then(next);
     }
     next()
 })
-
-
+router.afterEach( route => {
+})
 new Vue({
   el:'#app',
   store,

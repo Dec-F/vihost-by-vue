@@ -86,12 +86,12 @@
     </div>
 </template>
 <script>
-
 export default {
     data() {
+
         return {
             activeIndex: '1',
-            activeIndex2: '1'
+            activeIndex2: '1',
         };
     },
     methods: {
@@ -99,7 +99,13 @@ export default {
             console.log(key, keyPath);
         }
     },
+    computed: {
+    },
+    components: {
+    },
+    watch: {
 
+    }
 
 }
 </script>

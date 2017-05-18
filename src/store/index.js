@@ -9,19 +9,24 @@ import Cookie from 'js-cookie';
 Vue.use(Vuex)
 
 export default new Vuex.Store({
-  
-  state:{
-    userToken:Cookie.get('User-Token'),
-    name:'',
-    avatar:'',
-    email:'',
-    setting:{
-      
+
+  state: {
+    userToken: Cookie.get('User-Token'),
+    name: '',
+    avatar: '',
+    email: '',
+    account: '',
+    phone: '',
+    company: '',
+    area: [],
+
+    setting: {
+
     }
   },
-  actions:actions,
+  actions: actions,
   mutations,
-  getters:{
+  getters: {
     // name(state){
     //   return state.userAndPassword.name
     // },
