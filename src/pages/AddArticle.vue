@@ -22,21 +22,27 @@
                         </el-select>
                     </el-col>
                 </el-row>
-                <el-row>
+                <el-row>                    
                     <el-col :span="3">是否审核</el-col>
                     <el-col :span="10">
-                        <el-radio class="radio" v-model="radio1" label="q1">内部添加</el-radio>
-                        <el-radio class="radio" v-model="radio1" label="q2">外部url</el-radio>
+                        <input type="radio" @click="isAdd = true" class="dift" checked name="radio1" id="radio1"><label for="radio1"> 内部添加 </label>
+                        <input type="radio" @click="isAdd = false" class="dift" name="radio1" id="radio2"><label for="radio2"> 外部url</label>
+                        <!--<el-radio class="radio" @click="isAdd = true" v-model="radio1" label="q1">内部添加</el-radio>
+                        <el-radio class="radio" @click="isAdd = false" v-model="radio1" label="q2">外部url</el-radio>-->
                     </el-col>
                 </el-row>
-                <el-row v-if="isAdd">
+                <div v-if="isAdd">
                     <el-row>
                         <el-col :span="3">点赞</el-col>
-                        <el-col :span="5"><el-checkbox v-model="like">启用</el-checkbox></el-col>
+                        <el-col :span="5">
+                            <input type="checkbox" class="dift" id="like" v-model="like" /><label for="like"> 启用</label>
+                        </el-col>
                     </el-row>
                     <el-row>
                         <el-col :span="3">评论</el-col>
-                        <el-col :span="5"><el-checkbox v-model="comment">启用</el-checkbox></el-col>
+                        <el-col :span="5">
+                            <input type="checkbox" class="dift" id="comment" v-model="comment" /><label for="comment"> 启用</label>
+                        </el-col>
                     </el-row>
                     <el-row>
                         <el-col :span="3">封边图片</el-col>
@@ -53,12 +59,10 @@
                         <el-col :span="20"><el-input type="textarea" :rows="5" v-model="content"></el-input></el-col>
                     </el-row>
                     
-                </el-row>
+                </div>
                 <el-row v-else>
-                    <el-row>
-                        <el-col :span="3" class="lineH">链接</el-col>
-                        <el-col :span="10"><el-input>https:baidu.com</el-input></el-col>
-                    </el-row>
+                    <el-col :span="3" class="lineH">链接</el-col>
+                    <el-col :span="10"><el-input>https:baidu.com</el-input></el-col>
                 </el-row>
                 <el-row>
                     <el-col :span="3" class="lineH">排序</el-col>
@@ -103,7 +107,7 @@ export default {
     components: {
         BackAndRefresh
     },
-   
+
 }
 
 </script>
@@ -115,6 +119,15 @@ export default {
 
 .msg-box {
     padding: 15px;
+}
+.dift {
+    border: 1px solid #bfcbd9;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    cursor: pointer;
+    box-sizing: border-box;
+    vertical-align: middle;
 }
 
 input,

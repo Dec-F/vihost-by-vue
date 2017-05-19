@@ -21,17 +21,16 @@ export default {
 <style scoped>
 
 .moreaction {
-    float: right;
-    font-weight: 200;
+    float: right;   
     font-size: 16px;
+    margin-right: 20px;
 }
 
 img {
     vertical-align: middle;
 }
 .moreaction a {
-    font-size: 16px;
-    font-weight: 400;
+    font-size: 16px;    
     margin: 0 4px;
 }
 

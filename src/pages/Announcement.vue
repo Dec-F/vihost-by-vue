@@ -4,10 +4,7 @@
             <div class="msg-box">
                 <h3 class="msg-setting-box">
                     发布公告
-                    <div class="moreaction">                            
-                        <a href="javascript:;" @click="goback()"><i class="el-icon-arrow-left"></i>返回</a>
-                        <a href="javascript:;" @click="refresh()"><i class="el-icon-loading"></i>刷新</a>
-                    </div>
+                    <BackAndRefresh/>
                 </h3>
                 <form action="" class="clearfix">
                     <div class="arrangement lineHeight">
@@ -46,6 +43,7 @@
 </template>
 
 <script>
+import BackAndRefresh from 'components/BackAndRefresh'
 export default {
     name: 'msg',
     data() {
@@ -66,8 +64,12 @@ export default {
                 { value: 'Shenzhen', label: '深圳' },
                 { value: 'Guangzhou', label: '广州' }
             ],
-            checkList: []
+            checkList: [],
+            
         }
+    },
+    components: {
+        BackAndRefresh
     }
 }
 
@@ -105,6 +107,7 @@ textarea {
 
 .moreaction {
     float: right;
+    font-size: 16px;
 }
 
 .clearfix {

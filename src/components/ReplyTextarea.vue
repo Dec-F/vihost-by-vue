@@ -10,7 +10,8 @@
                     <el-dropdown-menu slot="dropdown">
                         <el-dropdown-item v-show="textareVal">
                             <router-link to='/AddArticle'>
-                                <i class="el-icon-document"></i><span>新建图文广播</span></router-link>
+                                <i class="el-icon-document"></i><span>新建图文广播</span>
+                            </router-link>
                         </el-dropdown-item>
                         <el-dropdown-item>
                             <a href="javascript:;">
