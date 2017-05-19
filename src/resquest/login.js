@@ -1,4 +1,5 @@
-export const login = function (url,state) {
-    
+import axios from 'axios';
+export const loginByEmail = function (data) {
+    return axios.post('/login',data)
 }
 

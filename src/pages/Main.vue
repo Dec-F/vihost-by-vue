@@ -3,34 +3,44 @@
         <div class="main-content clear-fix relative">
             <el-row class="notice">
                 <el-col :span='4'>
-                    <a href="#">公告：接入流程登记主体变更</a>
+                    <a :href='fetchData.notice.href'> 公告：{{fetchData.notice.title}}</a>
                 </el-col>
             </el-row>
             <el-row class="data-show">
                 <h5> 账户与数据统计</h5>
                 <el-col :span='4'>
                     <figure style="float:left">
-                        <img src="" alt="头像" style='width:70px;height:75px'>
+                        <img :src='avatar' alt="头像" style='width:70px;height:75px'>
                         <figcaption>
-                            <span><i></i>设置</span>
+                            <!--<span><i class="el-icon-setting"></i>设置</span>-->
                         </figcaption>
                     </figure>
                     <br/>
-                    <span style="">公积金管理局</span>
+                    <span style="">{{name}}</span>
                     <br/>
-                    <span>安吉县</span>
+                    <span>{{fetchData.area}}</span>
                     <span></span>
                 </el-col>
-                <el-col :span='3' class='data-item'>
+                <el-col :span='5' :offset='15'>
+                    <el-badge :value='fetchData.inform' :max='99' class='badge'>
+                        <el-button size='large'>
+                            评论
+                        </el-button>
+                        </el-badge>
+                
+                    <el-badge :value='fetchData.leaveWords' :max='99' class='badge'>
+                        <el-button size='large'>
+                            留言
+                        </el-button>
+                        </el-badge>
+                
+                    <el-badge :value='fetchData.subscribe' :max='99' class='badge'>
+                        <el-button size='large'>
+                            预约
+                        </el-button>
+                        </el-badge>
                 </el-col>
-                <el-col :span='3' class='data-item'>
-                </el-col>
-                <el-col :span='3' class='data-item'>
-                </el-col>
-                <el-col :span='3' class='data-item'>
-                </el-col>
-                <el-col :span='3' class='data-item'>
-                </el-col>
+               
             </el-row>
             <el-row>
                 <h5>常用功能与服务</h5>
@@ -91,9 +101,9 @@
                 <el-col :span='5'>
                 </el-col>
                 <!--<el-col :span='5' :offset='5'>
-                <i class='el-icon-setting'></i>
-                <span>站点配置</span>
-            </el-col>-->
+                                    <i class='el-icon-setting'></i>
+                                    <span>站点配置</span>
+                                </el-col>-->
                 <el-col :span='5' :offset='10'>
                     <i class='el-icon-setting'></i>
                     <span>站点配置</span>
@@ -107,32 +117,56 @@
                 <el-col :span='5'>
                 </el-col>
                 <!--<el-col :span='5' :offset='5'>
-                <i class='el-icon-setting'></i>
-                <span>站点配置</span>
-            </el-col>-->
+                                    <i class='el-icon-setting'></i>
+                                    <span>站点配置</span>
+                                </el-col>-->
                 <!--<el-col :span='5'>
-                <i class='el-icon-setting'></i>
-                <span>站点配置</span>
-            </el-col>-->
+                                    <i class='el-icon-setting'></i>
+                                    <span>站点配置</span>
+                                </el-col>-->
             </el-row>
             <div class="content-box">
                 <h5>新产品与服务动态</h5>
                 <a href="#">更多动态</a>
                 <ul class="dynamic clear-fix">
-                    <li><i class="el-icon-setting"></i><span>为调研</span></li>
-                    <li><i class="el-icon-setting"></i><span>为调研</span></li>
-                    <li><i class="el-icon-setting"></i><span>为调研</span></li>
-                    <li><i class="el-icon-setting"></i><span>为调研</span></li>
+                    <li>
+                        <i class="el-icon-setting"></i>
+                        <span>为调研</span>
+                    </li>
+                    <li>
+                        <i class="el-icon-setting"></i>
+                        <span>为调研</span>
+                    </li>
+                    <li>
+                        <i class="el-icon-setting"></i>
+                        <span>为调研</span>
+                    </li>
+                    <li>
+                        <i class="el-icon-setting"></i>
+                        <span>为调研</span>
+                    </li>
                 </ul>
             </div>
             <div class="content-box">
                 <h5>新产品与服务动态</h5>
                 <a href="#">更多动态</a>
                 <ul class="dynamic clear-fix">
-                    <li><i class="el-icon-setting"></i><span>为调研</span></li>
-                    <li><i class="el-icon-setting"></i><span>为调研</span></li>
-                    <li><i class="el-icon-setting"></i><span>为调研</span></li>
-                    <li><i class="el-icon-setting"></i><span>为调研</span></li>
+                    <li>
+                        <i class="el-icon-setting"></i>
+                        <span>为调研</span>
+                    </li>
+                    <li>
+                        <i class="el-icon-setting"></i>
+                        <span>为调研</span>
+                    </li>
+                    <li>
+                        <i class="el-icon-setting"></i>
+                        <span>为调研</span>
+                    </li>
+                    <li>
+                        <i class="el-icon-setting"></i>
+                        <span>为调研</span>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -141,7 +175,30 @@
 
 <script>
 export default {
-    name: 'main'
+    name: 'main',
+    data() {
+        return {
+            fetchData: {
+                notice: {
+                    title: '',
+                    href: ''
+                },
+                area: '',
+                inform:27,
+                leaveWords:200,
+                subscribe:87
+            },
+        }
+    },
+    computed: {
+        avatar() { return this.$store.state.avatar },
+
+        name() { return this.$store.state.name }
+
+    },
+    methods: {
+
+    }
 
 }
 </script>
@@ -181,7 +238,9 @@ h5 {
     height: 100px;
     margin-left: 5px
 }
-
+.badge{
+    margin: 10px
+}
 .service .el-col i,
 ul i {
     background-color: #13CE66;

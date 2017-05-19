@@ -59,20 +59,19 @@ export default {
         submitForm(formName) {
             this.$refs[formName].validate((valid) => {
                 if (valid) {
-                    this.axios.post('1.1.1.1').then((res) => {
-                        
+                    this.$store.dispatch('login').then(() => {
                         this.$router.push('/index')
                         this.$message({
                             type: 'success',
                             message: '登录成功'
                         })
-                    }, (error)=>{
-                        console.log(error);
+                    }, (error) => {
                         this.$message({
                             type: 'error',
                             message: '登录错误，如有需要，请联系管理员'
                         })
                     })
+
                 } else {
                     this.$message({
                         type: 'error',

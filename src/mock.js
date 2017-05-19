@@ -63,14 +63,27 @@ const tem = {
         url: '@url'
     },
     userAndPassword: {
-        accound: '@word',
+        account: '@word',
         phone: '@natural',
         email: '@email',
-        name: '@cname'
+        name: '@cname',
+        compony: '@cname'
     },
     departmentUser: {}
 }
 
 export const mock= function() {
-    Mock.mock('1.1.1.1',tem)
+    Mock.mock('/login',{
+        userToken:'dec_fan',
+        name:'dec_fan',
+        email:'dec_fan@icloud.com',
+        avatar:'@image',
+        account:'dec_fan@icloud.com',
+        phone:'17703668430',
+        company:'灵猫',
+        area: ["120000", "120100","120101"],
+        setting:{
+
+        }
+    })
 }
