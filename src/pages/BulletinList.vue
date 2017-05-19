@@ -6,8 +6,7 @@
                     公告列表
                     <div class="moreaction">
                         <a href="javascript:;"><i class="el-icon-plus"></i>推送公告</a>
-                        <a href="javascript:;" @click="goback()"><i class="el-icon-arrow-left"></i>返回</a>
-                        <a href="javascript:;" @click="refresh()"><i class="el-icon-loading"></i>刷新</a>
+                        <BackAndRefresh/>
                     </div>
                 </h3>
                 <div class="content-itemlist">
@@ -37,6 +36,7 @@
 </template>
 
 <script>
+import BackAndRefresh from 'components/BackAndRefresh'
 export default {
     data() {
         return {
@@ -52,6 +52,9 @@ export default {
                 
             }]
         }
+    },
+    computed: {
+        BackAndRefresh
     }
 }
 </script>
@@ -74,6 +77,7 @@ export default {
 
 .moreaction {
     float: right;
+    font-size: 16px;
 }
 
 .presentation {

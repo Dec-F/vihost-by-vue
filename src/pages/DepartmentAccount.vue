@@ -6,8 +6,7 @@
                     子账号列表
                     <div class="moreaction">
                         <a href="javascript:;"><i class="el-icon-plus"></i>添加子账号</a>
-                        <a href="javascript:;" @click="goback()"><i class="el-icon-arrow-left"></i>返回</a>
-                        <a href="javascript:;" @click="refresh()"><i class="el-icon-loading"></i>刷新</a>
+                        <BackAndRefresh/>
                     </div>
                 </h3>
                 <div class="content-itemlist">
@@ -36,6 +35,7 @@
 </template>
 
 <script>
+import BackAndRefresh from 'components/BackAndRefresh'
 export default {
     data() {
         return {
@@ -47,8 +47,12 @@ export default {
                 editDate: '17-4-26 12:45:25',
             }]
         }
+    },
+    components: {
+        BackAndRefresh
     }
 }
+
 </script>
 
 <style scoped>
@@ -73,6 +77,7 @@ ul {
 
 .moreaction {
     float: right;
+    font-size: 16px;
 }
 
 .el-table__fixed-right {

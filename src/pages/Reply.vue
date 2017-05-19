@@ -32,7 +32,7 @@
                                     </el-col>
                                 </el-row>
                                 <el-row :gutter="20" class="span1">
-                                    <el-col :span="3" class="tx-r">关键词</el-col>
+                                    <el-col :span="3" class="tx-r">回复内容</el-col>
                                     <el-col :span="20">
                                         <ReplyTextarea :textareVal="flagnew"></ReplyTextarea>
                                     </el-col>

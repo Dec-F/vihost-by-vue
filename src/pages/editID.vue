@@ -115,22 +115,11 @@ textarea {
 
 .moreaction {
     float: right;
+    font-size: 16px;
 }
 
 .clearfix {
     clear: both;
-}
-
-.moreaction a {
-    font-size: 16px;
-    font-weight: 400;
-    margin: 0 4px;
-}
-
-.moreaction a span {
-    vertical-align: middle;
-    display: inline-block;
-    margin-right: 4px
 }
 
 .lineHeight {
