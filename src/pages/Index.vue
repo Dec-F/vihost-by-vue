@@ -1,17 +1,17 @@
 <template>
     <div class="wrap">
-        <el-menu theme="dark" :default-active="activeIndex" mode="horizontal" menu-trigger='click' class="h-nav">
-            <router-link to='/index'>
-                <el-menu-item index="1">服务窗管理平台</el-menu-item>
-            </router-link>
-            <el-submenu index="2">
-                <span slot="title">产品与服务</span>
-                <el-menu-item index="2-1">选项1</el-menu-item>
-                <el-menu-item index="2-2">选项2</el-menu-item>
-                <el-menu-item index="2-3">选项3</el-menu-item>
-            </el-submenu>
-            <el-menu-item index="3">公积金管理局</el-menu-item>
-        </el-menu>
+        <!--<el-menu theme="dark" :default-active="activeIndex" mode="horizontal" menu-trigger='click' class="h-nav">
+                        <router-link to='/index'>
+                            <el-menu-item index="1"><i class='main-icon'></i>管理平台</el-menu-item>
+                        </router-link>
+                        <el-submenu index="2">
+                            <span slot="title">产品与服务</span>
+                            <el-menu-item index="2-1">选项1</el-menu-item>
+                            <el-menu-item index="2-2">选项2</el-menu-item>
+                            <el-menu-item index="2-3">选项3</el-menu-item>
+                        </el-submenu>
+                        <el-menu-item index="3">公积金管理局</el-menu-item>
+                    </el-menu>-->
         <el-col :span='3' class="v-nav">
             <el-menu theme='dark' mode='vertical' menu-trigger='click' :unique-opened="true">
                 <router-link to='/index'>
@@ -27,10 +27,10 @@
                 </router-link>
                 <el-submenu index="v-4">
                     <span slot="title">服务窗</span>
-                    <router-link to='/menu'>
+                    <router-link to='/serviceWindow/menu'>
                         <el-menu-item index="v-4-1" class='menu-mixin'>菜单管理</el-menu-item>
                     </router-link>
-                    <router-link to='/reply'>
+                    <router-link to='/serviceWindow/reply'>
                         <el-menu-item index="v-4-2" class='menu-mixin'>回复管理</el-menu-item>
                     </router-link>
                 </el-submenu>
@@ -79,6 +79,27 @@
             </el-menu>
     
         </el-col>
+        <section class="top-box  clear-fix">
+            <el-breadcrumb separator="/">
+                <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
+                <el-breadcrumb-item >{{ path }}</el-breadcrumb-item>
+                <el-breadcrumb-item >{{ path }}</el-breadcrumb-item>                
+                
+            </el-breadcrumb>
+            <span class="user">
+                <i class='main-icon'></i>
+                <el-dropdown>
+                    <span class="el-dropdown-link">
+                        dec_fan
+                        <i class="el-icon-caret-bottom el-icon--right"></i>
+                    </span>
+                    <el-dropdown-menu slot="dropdown">
+                        <el-dropdown-item>账号设置</el-dropdown-item>
+                        <el-dropdown-item>退出</el-dropdown-item>
+                    </el-dropdown-menu>
+                </el-dropdown>
+            </span>
+        </section>
         <vue-progress-bar></vue-progress-bar>
         <router-view>
     
@@ -88,14 +109,13 @@
 </template>
 <script>
 export default {
-    beforeMount () {
+    beforeMount() {
         this.$Progress.start()
     },
-    mounted () {
-        this.$Progress.finish()  
+    mounted() {
+        this.$Progress.finish()
     },
     data() {
-
         return {
             activeIndex: '1',
             activeIndex2: '1',
@@ -107,6 +127,9 @@ export default {
         }
     },
     computed: {
+        path() {
+            return this.$route.path
+        }
     },
     components: {
     },
@@ -124,8 +147,9 @@ body,
 #app,
 .wrap {
     width: 100%;
-    /*height: 100%;*/
+    height: 100vh;
     text-align: center;
+    overflow: hidden
 }
 
 ;
@@ -142,6 +166,20 @@ body,
     background-color: #475669
 }
 
+.top-box {
+    background-color: #CCCCCC;
+    text-align: left;
+    padding: 5px 0
+}
+
+.user {
+    float: right;
+    margin-right: 20px
+}
+
+
+
+/*
 .v-nav {
     position: absolute;
     box-sizing: border-box;
@@ -149,11 +187,7 @@ body,
     padding-top: 60px;
     height: 100vh;
     background-color: #324057
-}
-
-.h-nav {
-    z-index: 10
-}
+}*/
 
 .icon-wrap {
     position: relative
@@ -170,15 +204,17 @@ body,
 }
 
 .relative {
-    position: relative;
+    /*position: relative;*/
     left: 12.5%;
-    width: 87.5%;
+    /*width: 87.5%;*/
+    min-height: 100vh;
     background-color: #fff
 }
 
 .relative-wrap {
-    overflow: hidden;
-    height: 100%
+    overflow: auto;
+    height: 100vh;
+    /*height: 100%*/
 }
 
 .relative p {
@@ -188,5 +224,21 @@ body,
 
 a {
     text-decoration: none
+}
+
+.main-icon {
+    background: transparent url('http://oq6scdosy.bkt.clouddn.com/4eyes-2011.png') no-repeat center;
+    background-size: cover;
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    vertical-align: -10px;
+    margin-right: 10px;
+    border-radius: 5px
+}
+
+.clear-fix {
+
+    overflow: auto
 }
 </style>

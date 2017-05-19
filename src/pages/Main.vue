@@ -1,5 +1,5 @@
 <template>
-    <div class="main">
+    <div class="main relative-wrap">
         <div class="main-content clear-fix relative">
             <el-row class="notice">
                 <el-col :span='4'>
@@ -21,7 +21,7 @@
                     <span>{{fetchData.area}}</span>
                     <span></span>
                 </el-col>
-                <el-col :span='5' :offset='15'>
+                <el-col :span='7' :offset='13'>
                     <el-badge :value='fetchData.inform' :max='99' class='badge'>
                         <el-button size='large'>
                             评论
@@ -208,7 +208,7 @@ export default {
 }
 
 .main-content {
-    position: relative;
+    /*position: relative;*/
     left: 12.5%;
     background-color: #D3DCE6;
     padding: 10px 10px 1px 10px
@@ -224,9 +224,6 @@ export default {
     padding: 10px;
 }
 
-.main {
-    overflow: hidden
-}
 
 h5 {
     text-align: left;
@@ -268,11 +265,7 @@ ul i {
     right: 50px
 }
 
-.clear-fix::after {
-    content: '';
-    display: table;
-    clear: both
-}
+
 
 .dynamic {
     /*margin-top:20px*/
