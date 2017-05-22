@@ -14,7 +14,7 @@
                     </el-menu>-->
         <el-col :span='3' class="v-nav">
             <el-menu theme='dark' mode='vertical' menu-trigger='click' :unique-opened="true">
-                <router-link to='/index'>
+                <router-link to='/'>
                     <el-menu-item index="v-1" class=''>后台首页</el-menu-item>
                 </router-link>
                 <router-link to='/depart'>
@@ -36,7 +36,7 @@
                 </el-submenu>
                 <el-submenu index="v-5">
                     <span slot="title">用户管理</span>
-                    <router-link to='/TagsManagement'>
+                    <router-link to='/tagsManagement'>
                         <el-menu-item index="v-5-1" class='menu-mixin'>标签管理</el-menu-item>
                     </router-link>
                     <!--<router-link to='/'>-->
@@ -45,45 +45,44 @@
                 </el-submenu>
                 <el-submenu index="v-6">
                     <span slot="title">公告管理</span>
-                    <router-link to='/BulletinList'>
+                    <router-link to='/bulletin/list'>
                         <el-menu-item index="v-6-1" class='menu-mixin'>公告列表</el-menu-item>
                     </router-link>
-                    <router-link to='/Announcement'>
+                    <router-link to='/bulletin/addBulletin'>
                         <el-menu-item index="v-6-2" class='menu-mixin'>发布公告</el-menu-item>
                     </router-link>
                 </el-submenu>
                 <el-submenu index="v-7" class="icon-wrap">
                     <span slot="title">文章管理</span>
-                    <router-link to='/articleColumn'>
+                    <router-link to='/article/column'>
                         <el-menu-item index="v-7-1" class='menu-mixin'>文章栏目</el-menu-item>
                     </router-link>
-                    <router-link to='/articleList'>
+                    <router-link to='/article/list'>
                         <el-menu-item index="v-7-2" class='menu-mixin'>文章列表</el-menu-item>
                     </router-link>
                 </el-submenu>
                 <el-submenu index="v-8" class="icon-wrap">
                     <span slot="title">入驻部门</span>
-                    <router-link to='/settledList'>
+                    <router-link to='/settled/list'>
                         <el-menu-item index="v-8-1" class='menu-mixin'>入驻部门列表</el-menu-item>
                     </router-link>
-                    <router-link to='/AddSettled'>
+                    <router-link to='/settled/addSettled'>
                         <el-menu-item index="v-8-2" class='menu-mixin'>添加部门入驻</el-menu-item>
                     </router-link>
                 </el-submenu>
                 <router-link to='/editID'>
                     <el-menu-item index="v-9" class="icon-wrap">修改账号资料</el-menu-item>
                 </router-link>
-                <router-link to='/DepartmentAccount'>
+                <router-link to='/departmentAccount'>
                     <el-menu-item index="v-10" class="icon-wrap">部门账号管理</el-menu-item>
                 </router-link>
             </el-menu>
     
         </el-col>
-        <section class="top-box  clear-fix">
+        <section class="top-bar  clear-fix">
             <el-breadcrumb separator="/">
-                <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-                <el-breadcrumb-item >{{ path }}</el-breadcrumb-item>
-                <el-breadcrumb-item >{{ path }}</el-breadcrumb-item>                
+                <!--<el-breadcrumb-item :to="{ path: '/index' }">首页</el-breadcrumb-item>-->
+                <el-breadcrumb-item v-for="item in routeName" key="item" :to='item.path'>{{ item.name }}</el-breadcrumb-item>
                 
             </el-breadcrumb>
             <span class="user">
@@ -127,8 +126,9 @@ export default {
         }
     },
     computed: {
-        path() {
-            return this.$route.path
+        routeName() {
+            console.log(this.$route.matched)
+            return this.$route.matched.length===1?null:this.$route.matched
         }
     },
     components: {
@@ -166,10 +166,12 @@ body,
     background-color: #475669
 }
 
-.top-box {
-    background-color: #CCCCCC;
+.top-bar {
+    background-color: #EFF2F7;
     text-align: left;
-    padding: 5px 0
+    padding: 10px 0;
+    margin: 1px 0;
+    border-radius: 3px;
 }
 
 .user {
@@ -235,6 +237,11 @@ a {
     vertical-align: -10px;
     margin-right: 10px;
     border-radius: 5px
+}
+.el-breadcrumb{
+    display: inline-block;
+    vertical-align: bottom;
+    margin-left: 20px
 }
 
 .clear-fix {

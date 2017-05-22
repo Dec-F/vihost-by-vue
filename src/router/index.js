@@ -19,6 +19,7 @@ import Announcement from 'pages/Announcement';
 import TagsManagement from 'pages/TagsManagement';
 import DepartmentAccount from 'pages/DepartmentAccount';
 import AddArticle from 'pages/AddArticle';
+import Layout from '../components/Layout.vue';
 
 Vue.use(Router)
 
@@ -27,35 +28,55 @@ export default new Router({
     base: __dirname,
     routes: [
 
-        { path: '/', name: '登录', component: Login },
+        { path: '/login', name: '登录', component: Login },
         {
-            path: '/index',
+            path: '/',
             name: '首页',
             component: Index,
+            redirect: '/main',
             children: [
-                { path: '', name: '', component: MainContent }
+                { path: 'main', name: '后台首页', component: MainContent },
+
+                { path: 'depart', name: '部门首页', component: DepartmentIndex },
+                {
+                    path: 'serviceWindow',
+                    name: '服务窗',
+                    component: Layout,
+                    redirect: '/serviceWindow/menu',
+                    children: [
+                        { path: 'menu', name: '菜单管理', component: MenuManagement },
+                        { path: 'reply', name: '回复管理', component: Reply }
+                    ]
+                },
+                { path: 'QR', name: '二维码', component: QR },
+                { path: 'MsgManagement', name: '留言板管理', component: MsgManagement },
+                { path: 'EditId', name: '账号资料', component: EditID },
+                {
+                    path: 'settled', name: '入驻部门', component: Layout, redirect: '/settled/list',
+                    children: [
+                        { path: 'list', name: '列表', component: SettledList },
+                        { path: 'addSettled', name: '添加入驻', component: AddSettled }
+                    ]
+                },
+                {
+                    path: 'article', name: '文章管理', component: Layout, redirect: '/article/list',
+                    children: [
+                        { path: 'list', name: '列表', component: articleList },
+                        { path: 'column', name: '栏目', component: articleColumn }
+                    ]
+                },
+                {
+                    path: 'bulletin', name: '公告管理', component: Layout,
+                    children: [
+                        { path: 'list', name: '列表', component: BulletinList },
+                        { path: 'addBulletin', name: '发布', component: Announcement }
+                    ]
+                },
+                { path: 'tagsManagement', name: '', component: TagsManagement },
+                { path: 'departmentAccount', name: '', component: DepartmentAccount },
+                { path: 'addArticle', name: '', component: AddArticle },
+
             ]
         },
-        { path: '/depart', name: '部门首页', component: DepartmentIndex },
-        { path: '/serviceWindow', name: '服务窗' ,component:Index, redirect:'/serviceWindow/menu',
-        children:[
-        { path: 'menu', name: '菜单管理', component: MenuManagement },
-        { path: 'reply', name: '回复管理', component: Reply }            
-        ]
-    },
-        { path: '/QR', name: '二维码', component: QR },
-        { path: '/MsgManagement', name: '', component: MsgManagement },
-        { path: '/EditId', name: '账号资料', component: EditID },
-        { path: '/SettledList', name: '入驻部门', component: SettledList },
-        { path: '/AddSettled', name: '添加入驻', component: AddSettled },
-        { path: '/articleList', name: '', component: articleList },
-        { path: '/articleColumn', name: '', component: articleColumn },
-        { path: '/BulletinList', name: '', component: BulletinList },
-        { path: '/Announcement', name: '', component: Announcement },
-        { path: '/TagsManagement', name: '', component: TagsManagement },
-        { path: '/DepartmentAccount', name: '', component: DepartmentAccount },
-        { path: '/AddArticle', name: '', component: AddArticle },
-
-
     ]
 })

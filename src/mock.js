@@ -75,6 +75,9 @@ const tem = {
 export const mock= function() {
     Mock.mock('/login',{
         userToken:'dec_fan',
+
+    });
+    Mock.mock('/getInfo',{
         name:'dec_fan',
         email:'dec_fan@icloud.com',
         avatar:'@image',
@@ -83,7 +86,6 @@ export const mock= function() {
         company:'灵猫',
         area: ["120000", "120100","120101"],
         setting:{
-
         }
     })
 }

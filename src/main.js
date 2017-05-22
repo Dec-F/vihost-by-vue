@@ -24,7 +24,7 @@ Vue.use(VueProgressBar, {
 })
 router.beforeEach((to,from,next)=>{
   if(store.state.userToken && !store.state.name){
-      store.dispatch('login',store.state.userToken).then(next);
+      store.dispatch('getInfo',store.state.userToken).then(next);
     }
     next()
 })
