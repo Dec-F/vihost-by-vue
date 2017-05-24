@@ -87,5 +87,16 @@ export const mock= function() {
         area: ["120000", "120100","120101"],
         setting:{
         }
+    });
+    Mock.mock('/main',{
+        areaName:'@county',
+        inform:'@integer(10,100)',
+        leaveWords:'@integer(10,100)',
+        subscribe:'@integer(10,100)',
+        notice:{
+            href:'@url',
+            title:'@ctitle(5,20)'
+        },
+        AU:'@integer(300,3000)'
     })
 }

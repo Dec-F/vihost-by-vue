@@ -1,6 +1,6 @@
 import axios from 'axios';
-import {loginByEmail} from '../resquest/login';
-import {getInfo} from '../resquest/getInfo';
+import {loginByEmail} from 'req/login';
+import {getInfo} from 'req/getInfo';
 export default{
     login ({commit},formData){
         loginByEmail(formData).then((res)=>{
