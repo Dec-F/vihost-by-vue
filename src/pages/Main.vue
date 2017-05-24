@@ -2,12 +2,14 @@
     <div class="main relative-wrap">
         <div class="main-content clear-fix relative">
             <el-row class="notice">
-                <el-col :span='4'>
-                    <a :href='fetchData.notice.href'> 公告：{{fetchData.notice.title}}</a>
+                <el-col>
+                    <a :href='resData.notice.href'> 公告：
+                        <span class="notice-text">{{resData.notice.title}}</span>
+                    </a>
                 </el-col>
             </el-row>
             <el-row class="data-show">
-                <h5> 账户与数据统计</h5>
+                <!--<h5></h5>-->
                 <el-col :span='4'>
                     <figure style="float:left">
                         <img :src='avatar' alt="头像" style='width:70px;height:75px'>
@@ -18,113 +20,41 @@
                     <br/>
                     <span style="">{{name}}</span>
                     <br/>
-                    <span>{{fetchData.area}}</span>
+                    <span>{{resData.areaName}}</span>
                     <span></span>
                 </el-col>
+                <el-col :span='13'>
+                    <span class="count-to-pre">今日活跃用户</span>
+                        <countTo :startVal='0' :endVal='resData.AU' :duration='5000' class="count-to"></countTo>
+                </el-col>
                 <el-col :span='7'>
-                    <el-badge :value='fetchData.inform' :max='99' class='badge'>
+                    <el-badge :value='resData.inform' :max='99' class='badge'>
                         <el-button size='large'>
                             评论
                         </el-button>
-                        </el-badge>
-                
-                    <el-badge :value='fetchData.leaveWords' :max='99' class='badge'>
+                    </el-badge>
+    
+                    <el-badge :value='resData.leaveWords' :max='99' class='badge'>
                         <el-button size='large'>
                             留言
                         </el-button>
-                        </el-badge>
-                
-                    <el-badge :value='fetchData.subscribe' :max='99' class='badge'>
+                    </el-badge>
+    
+                    <el-badge :value='resData.subscribe' :max='99' class='badge'>
                         <el-button size='large'>
                             预约
                         </el-button>
-                        </el-badge>
+                    </el-badge>
                 </el-col>
-               
+                
             </el-row>
             <el-row>
-                <h5>常用功能与服务</h5>
-                <el-col :span='5'>
-                    <i class='el-icon-menu'></i>
-                    <span>功能配置</span>
-                </el-col>
-                <el-col :span='5'>
-                    <i class='el-icon-menu'></i>
-                    <span>功能配置</span>
-                </el-col>
-                <el-col :span='5'>
-                    <i class='el-icon-menu'></i>
-                    <span>功能配置</span>
-                </el-col>
-                <el-col :span='5'>
-                    <i class='el-icon-menu'></i>
-                    <span>功能配置</span>
-                </el-col>
+                <h5>数据统计</h5>
+                <echarts :width='800' :height='500' :option='echartsOption'>
+
+                </echarts>
             </el-row>
-            <el-row class='service'>
-                <el-col :span='5'>
-                    <i class='el-icon-setting'></i>
-                    <span>站点配置</span>
-                </el-col>
-                <el-col :span='5'>
-                </el-col>
-                <el-col :span='5' :offset='5'>
-                    <i class='el-icon-setting'></i>
-                    <span>站点配置</span>
-                </el-col>
-                <el-col :span='5'>
-                    <i class='el-icon-setting'></i>
-                    <span>站点配置</span>
-                </el-col>
-            </el-row>
-            <el-row class='service'>
-                <el-col :span='5'>
-                    <i class='el-icon-setting'></i>
-                    <span>站点配置</span>
-                </el-col>
-                <el-col :span='5'>
-                </el-col>
-                <el-col :span='5' :offset='5'>
-                    <i class='el-icon-setting'></i>
-                    <span>站点配置</span>
-                </el-col>
-                <el-col :span='5'>
-                    <i class='el-icon-setting'></i>
-                    <span>站点配置</span>
-                </el-col>
-            </el-row>
-            <el-row class='service'>
-                <el-col :span='5'>
-                    <i class='el-icon-setting'></i>
-                    <span>站点配置</span>
-                </el-col>
-                <el-col :span='5'>
-                </el-col>
-                <!--<el-col :span='5' :offset='5'>
-                                    <i class='el-icon-setting'></i>
-                                    <span>站点配置</span>
-                                </el-col>-->
-                <el-col :span='5' :offset='10'>
-                    <i class='el-icon-setting'></i>
-                    <span>站点配置</span>
-                </el-col>
-            </el-row>
-            <el-row class='service'>
-                <el-col :span='5'>
-                    <i class='el-icon-setting'></i>
-                    <span>站点配置</span>
-                </el-col>
-                <el-col :span='5'>
-                </el-col>
-                <!--<el-col :span='5' :offset='5'>
-                                    <i class='el-icon-setting'></i>
-                                    <span>站点配置</span>
-                                </el-col>-->
-                <!--<el-col :span='5'>
-                                    <i class='el-icon-setting'></i>
-                                    <span>站点配置</span>
-                                </el-col>-->
-            </el-row>
+            
             <div class="content-box">
                 <h5>新产品与服务动态</h5>
                 <a href="#">更多动态</a>
@@ -170,111 +100,35 @@
                 </ul>
             </div>
         </div>
-        <echarts :width='800' :height='500' :option='opt'></echarts>
     </div>
 </template>
 
 <script>
-import Echarts from '../components/Echarts';
+import mainReq from 'req/main';
+import CountTo from 'vue-count-to';
+import Echarts from 'components/Echarts';
+import echartsOption from 'src/static/mainEchartsOption';
 export default {
     name: 'main',
-    data() {
-        
+    created() {
+        this.fetchData()
+    },
+    data() {  
         return {
-            fetchData: {
+            resData: {
                 notice: {
                     title: '',
                     href: ''
                 },
-                area: '',
-                inform:27,
-                leaveWords:200,
-                subscribe:87
+                areaName: '',
+                inform: 0,
+                leaveWords: 0,
+                subscribe: 0,
+                AU: 1
             },
-             opt : {
-      title: {
-        text: '未来一周气温变化',
-        subtext: '纯属虚构'
-      },
-      tooltip: {
-        trigger: 'axis'
-      },
-      legend: {
-        data: ['最高气温', '最低气温']
-      },
-      toolbox: {
-        show: true,
-        feature: {
-          dataZoom: {
-            yAxisIndex: 'none'
-          },
-          dataView: { readOnly: false },
-          magicType: { type: ['line', 'bar'] },
-          restore: {},
-          saveAsImage: {}
+            echartsOption:echartsOption({month:4})
         }
-      },
-      xAxis: {
-        type: 'category',
-        boundaryGap: false,
-        data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
-      },
-      yAxis: {
-        type: 'value',
-        axisLabel: {
-          formatter: '{value} °C'
-        }
-      },
-      series: [
-        {
-          name: '最高气温',
-          type: 'line',
-          data: [11, 11, 15, 13, 12, 13, 10],
-          markPoint: {
-            data: [
-              { type: 'max', name: '最大值' },
-              { type: 'min', name: '最小值' }
-            ]
-          },
-          markLine: {
-            data: [
-              { type: 'average', name: '平均值' }
-            ]
-          }
-        },
-        {
-          name: '最低气温',
-          type: 'line',
-          data: [1, -2, 2, 5, 3, 2, 0],
-          markPoint: {
-            data: [
-              { name: '周最低', value: -2, xAxis: 1, yAxis: -1.5 }
-            ]
-          },
-          markLine: {
-            data: [
-              { type: 'average', name: '平均值' },
-              [{
-                symbol: 'none',
-                x: '90%',
-                yAxis: 'max'
-              }, {
-                symbol: 'circle',
-                label: {
-                  normal: {
-                    position: 'start',
-                    formatter: '最大值'
-                  }
-                },
-                type: 'max',
-                name: '最高点'
-              }]
-            ]
-          }
-        }
-      ]
-    }
-        }
+
     },
     computed: {
         avatar() { return this.$store.state.avatar },
@@ -283,9 +137,15 @@ export default {
 
     },
     methods: {
-
+        fetchData() {
+            mainReq(this.$store.state.userToken).then(res => {
+                console.log(res.data);
+                this.resData = res.data
+            })
+        }
     },
-    components:{
+    components: {
+        CountTo,
         Echarts
     }
 
@@ -303,9 +163,38 @@ export default {
     padding: 10px 10px 1px 10px
 }
 
+.notice {
+    text-align: left
+}
+
+.notice-text {
+    color: #1D8CE0;
+    text-decoration: underline
+}
+
 .notice,
 .data-show {
     margin-bottom: 20px;
+    vertical-align: middle
+}
+.data-show .el-col+.el-col{
+    margin-top: 10px
+}
+
+.count-to-pre {
+    display: inline-block;
+    line-height: 50px;
+    font-size: 20px
+}
+.count-to{
+    font-size: 40px;
+    vertical-align: bottom;
+    color: #FF4949
+}
+
+.count-to span {
+    color: red;
+    font-size: 40px
 }
 
 .el-row {
@@ -324,9 +213,11 @@ h5 {
     height: 100px;
     margin-left: 5px
 }
-.badge{
+
+.badge {
     margin: 10px
 }
+
 .service .el-col i,
 ul i {
     background-color: #13CE66;

@@ -127,7 +127,6 @@ export default {
     },
     computed: {
         routeName() {
-            console.log(this.$route.matched)
             return this.$route.matched.length===1?null:this.$route.matched
         }
     },
