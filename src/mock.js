@@ -75,15 +75,36 @@ const tem = {
 export const mock= function() {
     Mock.mock('/login',{
         userToken:'dec_fan',
+
+    });
+    Mock.mock('/getInfo',{
         name:'dec_fan',
         email:'dec_fan@icloud.com',
-        avatar:'@image',
+        avatar:'http://omqz8y2im.bkt.clouddn.com/business-mix-set-2012.png',
         account:'dec_fan@icloud.com',
         phone:'17703668430',
         company:'灵猫',
         area: ["120000", "120100","120101"],
         setting:{
-
         }
+    });
+    Mock.mock('/main',{
+        areaName:'@county',
+        inform:'@integer(10,100)',
+        leaveWords:'@integer(10,100)',
+        subscribe:'@integer(10,100)',
+        notice:{
+            href:'@url',
+            title:'@ctitle(5,20)'
+        },
+        AU:'@integer(300,3000)'
+    });
+    Mock.mock('/qr',{
+        QRUrl:'http://oq6scdosy.bkt.clouddn.com/8941701be0977e6ed208b6afb2777907.png',
+        'downloadUrl|3':['@url']
+    })
+    Mock.mock('/newqr',{
+        QRUrl:'http://oq6scdosy.bkt.clouddn.com/2017-05-25-1726145765.png',
+        'downloadUrl|3':['@url']        
     })
 }

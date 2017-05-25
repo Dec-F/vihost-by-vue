@@ -60,7 +60,7 @@ export default {
             this.$refs[formName].validate((valid) => {
                 if (valid) {
                     this.$store.dispatch('login').then(() => {
-                        this.$router.push('/index')
+                        this.$router.push('/')
                         this.$message({
                             type: 'success',
                             message: '登录成功'
