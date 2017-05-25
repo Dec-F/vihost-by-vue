@@ -98,5 +98,13 @@ export const mock= function() {
             title:'@ctitle(5,20)'
         },
         AU:'@integer(300,3000)'
+    });
+    Mock.mock('/qr',{
+        QRUrl:'http://oq6scdosy.bkt.clouddn.com/8941701be0977e6ed208b6afb2777907.png',
+        'downloadUrl|3':['@url']
+    })
+    Mock.mock('/newqr',{
+        QRUrl:'http://oq6scdosy.bkt.clouddn.com/2017-05-25-1726145765.png',
+        'downloadUrl|3':['@url']        
     })
 }
