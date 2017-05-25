@@ -25,7 +25,7 @@
                 </el-col>
                 <el-col :span='13'>
                     <span class="count-to-pre">今日活跃用户</span>
-                        <countTo :startVal='0' :endVal='resData.AU' :duration='5000' class="count-to"></countTo>
+                    <countTo :startVal='0' :endVal='resData.AU' :duration='5000' class="count-to"></countTo>
                 </el-col>
                 <el-col :span='7'>
                     <el-badge :value='resData.inform' :max='99' class='badge'>
@@ -46,59 +46,20 @@
                         </el-button>
                     </el-badge>
                 </el-col>
-                
+    
             </el-row>
             <el-row>
                 <h5>数据统计</h5>
-                <echarts :width='800' :height='500' :option='echartsOption'>
-
-                </echarts>
+                <el-col :span='24'>
+                    <echarts :styleObj="{height:'500px',width:'100%',background:'#fff'}" :option='barChartOption'>
+                    </echarts>
+                </el-col>
+                <!--<el-col :span='12'>
+                    <echarts :styleObj="{height:'500px',width:'100%',background:'#fff'}" :option='radarChartOption'>
+                    </echarts>
+                </el-col>-->
             </el-row>
-            
-            <div class="content-box">
-                <h5>新产品与服务动态</h5>
-                <a href="#">更多动态</a>
-                <ul class="dynamic clear-fix">
-                    <li>
-                        <i class="el-icon-setting"></i>
-                        <span>为调研</span>
-                    </li>
-                    <li>
-                        <i class="el-icon-setting"></i>
-                        <span>为调研</span>
-                    </li>
-                    <li>
-                        <i class="el-icon-setting"></i>
-                        <span>为调研</span>
-                    </li>
-                    <li>
-                        <i class="el-icon-setting"></i>
-                        <span>为调研</span>
-                    </li>
-                </ul>
-            </div>
-            <div class="content-box">
-                <h5>新产品与服务动态</h5>
-                <a href="#">更多动态</a>
-                <ul class="dynamic clear-fix">
-                    <li>
-                        <i class="el-icon-setting"></i>
-                        <span>为调研</span>
-                    </li>
-                    <li>
-                        <i class="el-icon-setting"></i>
-                        <span>为调研</span>
-                    </li>
-                    <li>
-                        <i class="el-icon-setting"></i>
-                        <span>为调研</span>
-                    </li>
-                    <li>
-                        <i class="el-icon-setting"></i>
-                        <span>为调研</span>
-                    </li>
-                </ul>
-            </div>
+    
         </div>
     </div>
 </template>
@@ -107,13 +68,14 @@
 import mainReq from 'req/main';
 import CountTo from 'vue-count-to';
 import Echarts from 'components/Echarts';
-import echartsOption from 'src/static/mainEchartsOption';
+import barChartOption from 'src/static/mainEcharts/barChart';
+import radarChartOption from 'src/static/mainEcharts/radarChart';
 export default {
     name: 'main',
     created() {
         this.fetchData()
     },
-    data() {  
+    data() {
         return {
             resData: {
                 notice: {
@@ -126,7 +88,8 @@ export default {
                 subscribe: 0,
                 AU: 1
             },
-            echartsOption:echartsOption({month:4})
+            barChartOption: barChartOption({ month: 4 }),
+            radarChartOption: radarChartOption
         }
 
     },
@@ -139,7 +102,6 @@ export default {
     methods: {
         fetchData() {
             mainReq(this.$store.state.userToken).then(res => {
-                console.log(res.data);
                 this.resData = res.data
             })
         }
@@ -177,7 +139,8 @@ export default {
     margin-bottom: 20px;
     vertical-align: middle
 }
-.data-show .el-col+.el-col{
+
+.data-show .el-col+.el-col {
     margin-top: 10px
 }
 
@@ -186,7 +149,8 @@ export default {
     line-height: 50px;
     font-size: 20px
 }
-.count-to{
+
+.count-to {
     font-size: 40px;
     vertical-align: bottom;
     color: #FF4949

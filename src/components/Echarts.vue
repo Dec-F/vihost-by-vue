@@ -1,5 +1,5 @@
 <template>
-  <div id="echarts" ref="echarts" v-bind:style="{ width:width+'px',height:height+'px',background:'#fff'}">
+  <div id="echarts" ref="echarts" v-bind:style="styleObj">
   </div>
 </template>
 
@@ -7,7 +7,7 @@
 const echarts = require('echarts');
 export default {
   name: 'echarts',
-  props: ['width','height','option'],
+  props: ['styleObj','option'],
   mounted() {
     let chart = echarts.init(this.$refs.echarts);
     chart.setOption(this.$props.option)

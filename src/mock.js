@@ -80,7 +80,7 @@ export const mock= function() {
     Mock.mock('/getInfo',{
         name:'dec_fan',
         email:'dec_fan@icloud.com',
-        avatar:'@image',
+        avatar:'http://omqz8y2im.bkt.clouddn.com/business-mix-set-2012.png',
         account:'dec_fan@icloud.com',
         phone:'17703668430',
         company:'灵猫',

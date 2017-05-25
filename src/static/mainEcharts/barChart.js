@@ -1,14 +1,14 @@
-var xAxisData = [];
+
+export default function (obj) {
+    var xAxisData = [];
 var data1 = [];
 var data2 = [];
-export default function (obj) {
-    for (var i = 0; i < 30; i++) {
+    for (var i = 1; i < 31; i++) {
     xAxisData.push(obj.month +'/'+ i);
     data1.push((Math.sin(i / 5) * (i / 5 -10) + i / 6) * 5);
     data2.push((Math.cos(i / 5) * (i / 5 -10) + i / 6) * 5);
 }
-return option
-}
+
 
 var option = {
     title: {
@@ -45,14 +45,14 @@ var option = {
         type: 'bar',
         data: data1,
         animationDelay: function (idx) {
-            return idx * 10;
+            return idx * 100;
         }
     }, {
         name: '上月',
         type: 'bar',
         data: data2,
         animationDelay: function (idx) {
-            return idx * 10 + 100;
+            return idx * 100 + 500;
         }
     }],
     animationEasing: 'elasticOut',
@@ -60,5 +60,7 @@ var option = {
         return idx * 5;
     }
 };
+return option
+}
 
 
