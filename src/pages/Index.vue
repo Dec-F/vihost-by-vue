@@ -89,8 +89,8 @@
                 <i class='main-icon'></i>
                 <el-dropdown>
                     <span class="el-dropdown-link">
-                        dec_fan
-                        <i class="el-icon-caret-bottom el-icon--right"></i>
+                        {{userName}}
+                        <i class="el-icon-caret-bottom el-icon-right"></i>
                     </span>
                     <el-dropdown-menu slot="dropdown">
                         <el-dropdown-item>账号设置</el-dropdown-item>
@@ -128,6 +128,9 @@ export default {
     computed: {
         routeName() {
             return this.$route.matched.length===1?null:this.$route.matched
+        },
+        userName(){
+            return  this.$store.state.name
         }
     },
     components: {

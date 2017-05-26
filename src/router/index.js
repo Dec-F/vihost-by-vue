@@ -61,14 +61,14 @@ export default new Router({
                 {
                     path: 'article', name: '文章管理', component: Layout, redirect: '/article/list',
                     children: [
-                        { path: 'list', name: '列表', component: articleList },
+                        { path: 'list', name: '文章列表', component: articleList },
                         { path: 'column', name: '栏目', component: articleColumn }
                     ]
                 },
                 {
                     path: 'bulletin', name: '公告管理', component: Layout,
                     children: [
-                        { path: 'list', name: '列表', component: BulletinList },
+                        { path: 'list', name: '公告列表', component: BulletinList },
                         { path: 'addBulletin', name: '发布', component: Announcement }
                     ]
                 },
