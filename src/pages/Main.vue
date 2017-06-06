@@ -55,9 +55,9 @@
                     </echarts>
                 </el-col>
                 <!--<el-col :span='12'>
-                    <echarts :styleObj="{height:'500px',width:'100%',background:'#fff'}" :option='radarChartOption'>
-                    </echarts>
-                </el-col>-->
+                                <echarts :styleObj="{height:'500px',width:'100%',background:'#fff'}" :option='radarChartOption'>
+                                </echarts>
+                            </el-col>-->
             </el-row>
     
         </div>
@@ -73,7 +73,9 @@ import radarChartOption from 'src/static/mainEcharts/radarChart';
 export default {
     name: 'main',
     created() {
-        this.fetchData()
+        this.fetchData().then(res => {
+            this.resData = res.data
+        })
     },
     data() {
         return {
@@ -94,16 +96,14 @@ export default {
 
     },
     computed: {
-        avatar() { return this.$store.state.avatar },
+        avatar() { return this.$store.state.userInfo.avatar },
 
-        name() { return this.$store.state.name }
+        name() { return this.$store.state.userInfo.name }
 
     },
     methods: {
         fetchData() {
-            mainReq(this.$store.state.userToken).then(res => {
-                this.resData = res.data
-            })
+            return mainReq(this.$store.state.userToken)
         }
     },
     components: {

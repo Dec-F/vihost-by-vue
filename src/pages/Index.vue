@@ -130,7 +130,7 @@ export default {
             return this.$route.matched.length===1?null:this.$route.matched
         },
         userName(){
-            return  this.$store.state.name
+            return  this.$store.state.userInfo.name
         }
     },
     components: {
@@ -250,4 +250,9 @@ a {
 
     overflow: auto
 }
+.el-tree-node__content:hover .tree-edit{
+    opacity: 1!important
+}
+
+
 </style>

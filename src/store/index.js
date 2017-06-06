@@ -12,17 +12,16 @@ export default new Vuex.Store({
 
   state: {
     userToken: Cookie.get('User-Token'),
-    name: '',
-    avatar: '',
-    email: '',
-    account: '',
-    phone: '',
-    company: '',
-    area: [],
-
-    setting: {
-
+    userInfo: {
+      name: '',
+      avatar: '',
+      email: '',
+      account: '',
+      phone: '',
+      company: '',
+      area: [],
     }
+
   },
   actions: actions,
   mutations,
