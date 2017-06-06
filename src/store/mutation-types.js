@@ -7,6 +7,7 @@
 export default{
     LOGIN : 'login',
     SET_COOKIE:'set_cookie',
-    GET_INFO:'getInfo'
+    GET_INFO:'get_info',
+    SAVE_INFO:'save_info'
 }
 

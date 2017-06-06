@@ -9,31 +9,31 @@
                 <form action="" class="clearfix">
                     <div class="arrangement lineHeight">
                         <span id="msgtitle">账号</span>
-                        <el-input v-model="account"></el-input>
+                        <el-input v-model="userInfo.account"></el-input>
                     </div>
                     <div class="arrangement">
                         <span id="synopsis">手机</span>
-                        <el-input v-model="phone"></el-input>
+                        <el-input v-model="userInfo.phone"></el-input>
                     </div>
                     <div class="arrangement">
                         <span id="coverImg">邮箱</span>
-                        <el-input v-model="email"></el-input>
+                        <el-input v-model="userInfo.email"></el-input>
                     </div>
                     <div class="arrangement">
                         <span id="synopsis">姓名/昵称</span>
-                        <el-input v-model="name"></el-input>
+                        <el-input v-model="userInfo.name"></el-input>
                     </div>
                     <div class="arrangement">
                         <span id="coverImg">组织/公司</span>
-                        <el-input v-model="company"></el-input>
+                        <el-input v-model="userInfo.company"></el-input>
                     </div>
                     <div class="arrangement ">
                         <span>地区</span>
-                        <el-cascader size="small" :options="options" v-model="area" @change='ss' expand-trigger="hover" style="width:22%;margin-left:10px">
+                        <el-cascader size="small" :options="options" v-model="userInfo.area" expand-trigger="hover" style="width:22%;margin-left:10px">
                         </el-cascader>
                     </div>
                     <div class="arrangement submitBox">
-                        <el-button type="primary">提交</el-button>
+                        <el-button type="primary" @click='save'>提交</el-button>
                     </div>
                 </form>
             </div>
@@ -45,36 +45,28 @@
 import BackAndRefresh from 'components/BackAndRefresh'
 import { regionData } from 'element-china-area-data'
 import { mapState } from 'vuex';
-// import { mapState } from 'Vuex';
 
 export default {
     name: 'msg',
     data() {
-        // console.log(JSON.stringify(this.$store.state));
         return {
-            options: regionData
-            // name: '',
-            // email: '',
-            // account: '',
-            // phone: '',
-            // company: '',
-            // area: []
+            options: regionData,
+            userInfo: Object.assign({},this.$store.state.userInfo)
         }
     },
     methods: {
-        ss(val) {
-            // console.log(this.prefecture,this.$store.state);
-            this.$store.commit('save_userInformation', this.area)
+        save() {
+            this.$store.dispatch('saveInfo',this.userInfo)
         }
     },
     computed: mapState([
-        
-        'account',
-        'phone',
-        'company',
-        'area',
-        'name',
-        'email',
+
+        // 'account',
+        // 'phone',
+        // 'company',
+        // 'area',
+        // 'name',
+        // 'email',
     ]),
     components: {
         BackAndRefresh

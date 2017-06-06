@@ -107,4 +107,7 @@ export const mock= function() {
         QRUrl:'http://oq6scdosy.bkt.clouddn.com/2017-05-25-1726145765.png',
         'downloadUrl|3':['@url']        
     })
+    Mock.mock('/saveInfo',{
+        sd:'1'
+    })
 }
