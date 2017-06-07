@@ -23,9 +23,9 @@ Vue.config.productionTip = false
 Vue.use(ElementUI)
 
 Vue.use(VueProgressBar, {
-  color: 'rgb(143, 255, 199)',
+  color: '#13CE66',
   failedColor: 'red',
-  height: '2px'
+  thickness: '5px'
 })
 router.beforeEach((to, from, next) => {
   if (!store.state.userToken) {

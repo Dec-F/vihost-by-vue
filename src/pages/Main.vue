@@ -73,8 +73,10 @@ import radarChartOption from 'src/static/mainEcharts/radarChart';
 export default {
     name: 'main',
     created() {
+        this.$Progress.start()
         this.fetchData().then(res => {
-            this.resData = res.data
+            this.resData = res.data;           
+            this.$Progress.finish()
         })
     },
     data() {
