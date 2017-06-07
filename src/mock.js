@@ -112,7 +112,7 @@ export const mock = function () {
     Mock.mock('/saveInfo', {
         sd: '1'
     })
-    Mock.mock('/reply', {
+    Mock.mock('/menuManagement', {
         menu: [{
             id: 1,
             label: '一级 1',
