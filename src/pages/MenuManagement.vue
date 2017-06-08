@@ -39,20 +39,37 @@
                 </el-col>
             </el-row>
             <el-dialog title='菜单设置' :visible.sync="inputActive" class="input-form" size='tiny'>
-                <el-form :model="inputForm">
-                    <el-form-item label="活动名称" >
+                <el-form :model="inputForm" :rules='rules' ref='inputForm'>
+                    <el-form-item label="菜单名称" prop='name'>
                         <el-input v-model="inputForm.name" auto-complete="off"></el-input>
                     </el-form-item>
-                    <!--<el-form-item label="活动区域" label-width='120px'>
-                        <el-select v-model="inputForm.region" placeholder="请选择活动区域">
-                            <el-option label="区域一" value="shanghai"></el-option>
-                            <el-option label="区域二" value="beijing"></el-option>
+    
+                    <el-form-item label='菜单类型' v-if="inputType==2" prop="type">
+                        <el-select v-model="inputForm.type" placeholder="请选择菜单类型">
+                            <el-option label="关键词回复" :value="1"></el-option>
+                            <el-option label="栏目" :value="2"></el-option>
+                            <el-option label="附近地址集" :value="3"></el-option>
+                            <el-option label="留言板" :value="4"></el-option>
+                            <el-option label="相册" :value="5"></el-option>
+                            <el-option label="附近地图" :value="6"></el-option>
+                            <el-option label="微首页" :value="7"></el-option>
+                            <el-option label="url链接" :value="8"></el-option>
                         </el-select>
-                    </el-form-item>-->
+                    </el-form-item>
+    
+                    <el-form-item :label='inputLabel[inputForm.type-1]' v-if="[6,8].indexOf(inputForm.type)!==-1" prop='textContent'>
+                        <el-input v-model="inputForm.textContent" auto-complete="off" :placeholder="inputPlaceholder[inputForm.type]"></el-input>
+                    </el-form-item>
+                    <el-form-item label='菜单效果' v-if="[1,2,3].indexOf(inputForm.type)!==-1" prop="selectContent">
+                        <el-select v-model="inputForm.selectContent" :placeholder="'请选择'+inputLabel[inputForm.type-1]">
+                            
+                        </el-select>
+                    </el-form-item>
+    
                 </el-form>
                 <div slot="footer" class="dialog-footer">
-                    <el-button @click="dialog = false">取 消</el-button>
-                    <el-button type="primary" @click="dialog = false">确 定</el-button>
+                    <el-button @click="cancel">取 消</el-button>
+                    <el-button type="primary" @click="inputValidate(inputForm)">确 定</el-button>
                 </div>
             </el-dialog>
     
@@ -63,6 +80,8 @@
 
 <script>
 import menuAPI from 'req/serviceWindow/menu';
+
+
 export default {
     mounted() {
         this.$Progress.start()
@@ -88,16 +107,50 @@ export default {
             }],
             dialog: true,
             submenu: null,
-            inputAtive:true,
-            inputForm:{
-                name:'',
-                region:'',
-                type:0
+            inputActive: false,
+            inputType: 0,
+            inputLabel: ["关键词", "栏目", '附近地址集', "留言板", '相册', '附近地图', '微首页', 'url链接'],
+            inputPlaceholder: {
+                '6': '用户点击该菜单后，将以此关键字查询相关具体位置',
+                '8': '请填写http://或https://开头的网址，用户点击后跳转'
+            },
+
+            inputForm: {
+                name: '',
+                type: null,
+                textContent: ''
+            },
+            rules: {
+                name: [
+                    { required: true, message: '请输入活动名称', trigger: 'blur' },
+                    { min: 2, max: 6, message: '长度在 2 到 5 个字符', trigger: 'blur' }
+                ],
+                type: [
+                    { required: true, type: 'number', message: '请输入类型', trigger: 'blur' }
+                ],
+                textContent: [
+                    { required: true, message: '请输入关键字', trigger: 'blur' },
+                ],
+                selectContent:[
+                    { required: true, message: '请输入内容', trigger: 'blur' }
+                ]
             }
         }
     },
 
     methods: {
+
+        inputValidate(data) {
+            this.$refs.inputForm.validate(valid => {
+                if (valid) {
+                    this.confirm(data)
+                } else {
+                    this.cancel()
+                }
+            })
+        },
+        confirm() { },
+        cancel() { },
         toggleDialog() {
             if (this.menu[0].children.length > 3) {
                 this.$message({
@@ -130,7 +183,6 @@ export default {
                     type: 'error',
                     message: '保存失败'
                 })
-                console.log(err);
             })
         },
 
@@ -201,22 +253,18 @@ export default {
         },
 
         edit(store, data) {
-
-            this.$prompt('请输入菜单名字', '提示', {
-                confirmButtonText: '确定',
-                cancelButtonText: '取消',
-            }).then(({ value }) => {
-                this.$message({
-                    type: 'success',
-                    message: 'done'
-                });
-                data.label = value
-            }).catch(() => {
-                this.$message({
-                    type: 'info',
-                    message: '取消输入'
-                });
-            });
+            !data.children ? this.inputType = 2 : this.inputType = 1
+            this.inputActive = true;
+            this.inputVal().then(val => {
+                data.label = val.name
+                if (val.type) {
+                    data.type = val.type
+                }
+                this.inputActive = false
+            }).catch(err => {
+                this.$message('取消编辑');
+                this.inputActive = false
+            })
         },
 
         remove(store, data) {
@@ -234,7 +282,6 @@ export default {
 
             let tem = {
                 id: ++maxId,
-                label: '新建菜单',
                 parent: data.id
             };
 
@@ -263,8 +310,31 @@ export default {
                 })
                 return
             }
+            this.inputActive = true;
+            if (!data.id) {
+                this.inputType = 1
+            } else {
+                this.inputType = 2
+            }
 
-            data.children.push(tem)
+            this.inputVal().then(val => {
+                tem.label = val.name
+                data.children.push(tem)
+                this.inputActive = false
+            }).catch(err => {
+                this.$message('取消添加');
+                this.inputActive = false
+            })
+
+        },
+
+        inputVal() {
+            this.inputForm.name = '';
+            this.inputForm.type = '';
+            return new Promise((resolve, reject) => {
+                this.confirm = resolve;
+                this.cancel = reject;
+            })
         }
 
     },
@@ -373,7 +443,8 @@ export default {
     text-align: center;
     margin-top: 40px
 }
-.input-form{
+
+.input-form {
     text-align: left;
 }
 </style>
