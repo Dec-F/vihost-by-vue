@@ -25,7 +25,7 @@
                 </el-col>
                 <el-col :span='13'>
                     <span class="count-to-pre">今日活跃用户</span>
-                    <countTo :startVal='0' :endVal='resData.AU' :duration='5000' class="count-to"></countTo>
+                    <countTo ref="countTo" :startVal='0' :endVal='resData.AU' :duration='5000' :autoplay='false' class="count-to"></countTo>
                 </el-col>
                 <el-col :span='7'>
                     <el-badge :value='resData.inform' :max='99' class='badge'>
@@ -77,6 +77,7 @@ export default {
         this.fetchData().then(res => {
             this.resData = res.data;           
             this.$Progress.finish()
+            this.$refs['countTo'].start()
         })
     },
     data() {
